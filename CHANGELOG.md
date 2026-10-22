@@ -7,6 +7,11 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-22
+
+### Added
+- The settings page shows the installed version with a link to the release notes on GitHub.
+
 ## [0.1.0] - 2026-10-22
 
 ### Added

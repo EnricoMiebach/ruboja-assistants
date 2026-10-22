@@ -158,6 +158,7 @@ final class Admin_Page {
 		?>
 		<div class="wrap ruboja-assistants-admin">
 			<h1><?php esc_html_e( 'Ruboja Assistants', 'ruboja-assistants' ); ?></h1>
+			<?php $this->render_version(); ?>
 
 			<?php $this->render_notice(); ?>
 
@@ -306,6 +307,30 @@ final class Admin_Page {
 			</ul>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Shows the installed version with a link to the release notes.
+	 *
+	 * @return void
+	 */
+	private function render_version(): void {
+		$headers    = get_file_data( PLUGIN_FILE, array( 'update_uri' => 'Update URI' ) );
+		$repository = Updater::repository( (string) $headers['update_uri'] );
+
+		printf(
+			'<p class="ruboja-assistants-admin__version">%1$s%2$s</p>',
+			esc_html(
+				sprintf(
+					/* translators: %s: plugin version. */
+					__( 'Version %s', 'ruboja-assistants' ),
+					VERSION
+				)
+			),
+			'' !== $repository
+				? sprintf( ' · <a href="%1$s">%2$s</a>', esc_url( 'https://github.com/' . $repository . '/releases' ), esc_html__( 'Release notes on GitHub', 'ruboja-assistants' ) )
+				: ''
+		);
 	}
 
 	/**
