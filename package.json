@@ -1,0 +1,22 @@
+{
+	"name": "ruboja-assistants",
+	"version": "0.1.0",
+	"private": true,
+	"description": "WordPress plugin that embeds Ruboja AI assistants inline or as a floating chat window.",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"env:start": "wp-env start",
+		"env:stop": "wp-env stop",
+		"env:destroy": "wp-env destroy",
+		"composer": "wp-env run cli --env-cwd=wp-content/plugins/ruboja-assistants composer",
+		"lint:php": "wp-env run cli --env-cwd=wp-content/plugins/ruboja-assistants vendor/bin/phpcs",
+		"format:php": "wp-env run cli --env-cwd=wp-content/plugins/ruboja-assistants vendor/bin/phpcbf",
+		"test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/ruboja-assistants vendor/bin/phpunit",
+		"i18n:pot": "wp-env run cli --env-cwd=wp-content/plugins/ruboja-assistants wp i18n make-pot . languages/ruboja-assistants.pot --exclude=vendor,node_modules,tests,dist",
+		"i18n:compile": "wp-env run cli --env-cwd=wp-content/plugins/ruboja-assistants bash bin/compile-translations.sh",
+		"build:zip": "bash bin/build-zip.sh"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^10.0.0"
+	}
+}

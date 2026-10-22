@@ -1,0 +1,8 @@
+.ruboja-assistant-block__placeholder .components-placeholder__fieldset {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.ruboja-assistant-block__placeholder .components-base-control {
+	min-width: 260px;
+}

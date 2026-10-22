@@ -1,0 +1,203 @@
+/* Ruboja Assistants – front end. Colors come from --ruboja-color / --ruboja-on-color. */
+
+.ruboja-assistant {
+	--ruboja-color: #1f3a5f;
+	--ruboja-on-color: #fff;
+	--ruboja-height: 720px;
+	--ruboja-radius: 12px;
+	box-sizing: border-box;
+}
+
+.ruboja-assistant *,
+.ruboja-assistant *::before,
+.ruboja-assistant *::after {
+	box-sizing: inherit;
+}
+
+/* Inline */
+
+.ruboja-assistant--inline {
+	width: 100%;
+	margin-block: 1.5em;
+	overflow: hidden;
+	background: #fff;
+	color: #1e1e1e;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: var(--ruboja-radius);
+}
+
+.ruboja-assistant--inline .ruboja-assistant__stage {
+	height: min(var(--ruboja-height), 90vh);
+}
+
+/* Shared */
+
+.ruboja-assistant__stage {
+	display: flex;
+	min-height: 0;
+}
+
+.ruboja-assistant__placeholder {
+	max-width: 34rem;
+	margin: auto;
+	padding: 2rem 1.5rem;
+	text-align: center;
+}
+
+.ruboja-assistant__title {
+	margin: 0 0 0.5em;
+	font-size: 1.15em;
+	font-weight: 600;
+}
+
+.ruboja-assistant__consent {
+	margin: 0 0 1.25em;
+	font-size: 0.9em;
+	line-height: 1.5;
+	opacity: 0.85;
+}
+
+.ruboja-assistant__start,
+.ruboja-assistant__launcher {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	padding: 0.75em 1.4em;
+	font: inherit;
+	font-weight: 600;
+	line-height: 1.2;
+	color: var(--ruboja-on-color);
+	background: var(--ruboja-color);
+	border: 0;
+	border-radius: 999px;
+	cursor: pointer;
+}
+
+.ruboja-assistant__start:disabled {
+	cursor: progress;
+	opacity: 0.7;
+}
+
+.ruboja-assistant__start:focus-visible,
+.ruboja-assistant__launcher:focus-visible,
+.ruboja-assistant__close:focus-visible {
+	outline: 3px solid var(--ruboja-color);
+	outline-offset: 3px;
+}
+
+.ruboja-assistant__status {
+	min-height: 1.4em;
+	margin: 0.75em 0 0;
+	font-size: 0.9em;
+}
+
+.ruboja-assistant__frame {
+	display: block;
+	flex: 1;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* Floating */
+
+.ruboja-assistant--floating {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	z-index: 99999;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 12px;
+	color: #1e1e1e;
+}
+
+.ruboja-assistant--floating.ruboja-assistant--left {
+	right: auto;
+	left: 20px;
+	align-items: flex-start;
+}
+
+.ruboja-assistant__launcher {
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ruboja-assistant__icon {
+	width: 1.25em;
+	height: 1.25em;
+	fill: currentColor;
+}
+
+.ruboja-assistant__panel {
+	display: flex;
+	flex-direction: column;
+	width: min(420px, calc(100vw - 40px));
+	height: min(680px, calc(100vh - 120px));
+	overflow: hidden;
+	background: #fff;
+	border-radius: 14px;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.ruboja-assistant__panel[hidden] {
+	display: none;
+}
+
+.ruboja-assistant__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1em;
+	padding: 0.6em 0.6em 0.6em 1em;
+	font-weight: 600;
+	color: var(--ruboja-on-color);
+	background: var(--ruboja-color);
+}
+
+.ruboja-assistant__close {
+	padding: 0.1em 0.4em;
+	font-size: 1.5em;
+	line-height: 1;
+	color: inherit;
+	background: transparent;
+	border: 0;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.ruboja-assistant__panel .ruboja-assistant__stage {
+	flex: 1;
+}
+
+@media (max-width: 600px) {
+	.ruboja-assistant--floating.is-open .ruboja-assistant__panel {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 0;
+	}
+
+	.ruboja-assistant--floating.is-open .ruboja-assistant__launcher {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.ruboja-assistant__launcher {
+		transition: transform 0.15s ease;
+	}
+
+	.ruboja-assistant__launcher:hover {
+		transform: translateY(-1px);
+	}
+}
+
+/* Shown to editors only, when an embedded assistant is not released. */
+.ruboja-assistant-notice {
+	padding: 1em;
+	color: #b32d2e;
+	border: 1px dashed currentColor;
+	border-radius: 6px;
+}

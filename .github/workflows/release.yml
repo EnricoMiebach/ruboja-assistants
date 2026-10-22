@@ -1,0 +1,35 @@
+name: Release
+
+# Push a tag like v0.2.0 to publish a release. WordPress sites with the plugin
+# installed then offer the update under Dashboard → Updates.
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check that tag and plugin version match
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          HEADER_VERSION="$(sed -n 's/^ \* Version:[[:space:]]*//p' ruboja-assistants.php | tr -d '[:space:]')"
+          CONST_VERSION="$(sed -n "s/^const VERSION[[:space:]]*= '\(.*\)';/\1/p" ruboja-assistants.php)"
+          STABLE_TAG="$(sed -n 's/^Stable tag:[[:space:]]*//p' readme.txt | tr -d '[:space:]')"
+          echo "tag=$TAG_VERSION header=$HEADER_VERSION const=$CONST_VERSION readme=$STABLE_TAG"
+          test "$TAG_VERSION" = "$HEADER_VERSION"
+          test "$TAG_VERSION" = "$CONST_VERSION"
+          test "$TAG_VERSION" = "$STABLE_TAG"
+
+      - name: Build zip
+        run: bash bin/build-zip.sh
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/ruboja-assistants.zip --title "$GITHUB_REF_NAME" --generate-notes --verify-tag

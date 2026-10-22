@@ -1,0 +1,69 @@
+{
+    "translation-revision-date": "2026-10-22 16:30+0200",
+    "generator": "WP-CLI\/2.12.0",
+    "source": "blocks\/assistant\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de_DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Accent color": [
+                "Akzentfarbe"
+            ],
+            "Button label": [
+                "Button-Beschriftung"
+            ],
+            "Bottom right": [
+                "Unten rechts"
+            ],
+            "Bottom left": [
+                "Unten links"
+            ],
+            "Assistant": [
+                "Assistent"
+            ],
+            "Choose an assistant \u2026": [
+                "Assistent ausw\u00e4hlen \u2026"
+            ],
+            "Display": [
+                "Darstellung"
+            ],
+            "Inline in the content": [
+                "Inline im Inhalt"
+            ],
+            "Floating chat button": [
+                "Schwebender Chat-Button"
+            ],
+            "Height (px)": [
+                "H\u00f6he (px)"
+            ],
+            "Title": [
+                "Titel"
+            ],
+            "Leave empty to use the title from Ruboja.": [
+                "Leer lassen, um den Titel aus Ruboja zu verwenden."
+            ],
+            "Position": [
+                "Position"
+            ],
+            "Color": [
+                "Farbe"
+            ],
+            "No assistant is released yet. Release assistants under Settings \u2192 Ruboja Assistants.": [
+                "Es ist noch kein Assistent freigegeben. Assistenten unter Einstellungen \u2192 Ruboja-Assistenten freigeben."
+            ],
+            "\"%s\" appears as a floating chat button on the page.": [
+                "\u201e%s\u201c erscheint als schwebender Chat-Button auf der Seite."
+            ],
+            "\"%s\" is shown here in the content.": [
+                "\u201e%s\u201c wird hier im Inhalt angezeigt."
+            ],
+            "Ruboja Assistant": [
+                "Ruboja-Assistent"
+            ]
+        }
+    }
+}

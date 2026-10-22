@@ -1,0 +1,25 @@
+.ruboja-assistants-admin__table {
+	max-width: 1100px;
+}
+
+.ruboja-assistants-admin__table .check-column-wide {
+	width: 6em;
+}
+
+.ruboja-assistants-admin__table tr.is-missing td {
+	opacity: 0.6;
+}
+
+.ruboja-assistants-admin__missing {
+	color: #b32d2e;
+}
+
+.ruboja-assistants-admin__shortcode {
+	display: inline-block;
+	margin: 0 0.5em 0.25em 0;
+	word-break: break-all;
+}
+
+.ruboja-assistants-admin__examples code {
+	white-space: nowrap;
+}

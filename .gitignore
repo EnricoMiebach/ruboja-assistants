@@ -1,0 +1,17 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Build output
+/dist/
+
+# Local environment
+.wp-env.override.json
+.phpunit.result.cache
+.phpcs-cache
+*.log
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

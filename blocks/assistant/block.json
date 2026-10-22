@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ruboja/assistant",
+	"version": "0.1.0",
+	"title": "Ruboja Assistant",
+	"category": "embed",
+	"icon": "format-chat",
+	"description": "Embeds a released Ruboja assistant, inline or as a floating chat window.",
+	"keywords": [ "ruboja", "chat", "ai", "assistant", "ki" ],
+	"textdomain": "ruboja-assistants",
+	"attributes": {
+		"assistantId": {
+			"type": "string",
+			"default": ""
+		},
+		"mode": {
+			"type": "string",
+			"enum": [ "inline", "floating" ],
+			"default": "inline"
+		},
+		"height": {
+			"type": "number",
+			"default": 720
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonLabel": {
+			"type": "string",
+			"default": ""
+		},
+		"color": {
+			"type": "string",
+			"default": ""
+		},
+		"position": {
+			"type": "string",
+			"enum": [ "right", "left" ],
+			"default": "right"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./editor.css"
+}
