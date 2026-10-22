@@ -53,17 +53,33 @@ final class Embed {
 	 * @return void
 	 */
 	public function register_assets(): void {
-		wp_register_style( self::HANDLE, plugins_url( 'assets/css/frontend.css', PLUGIN_FILE ), array(), VERSION );
+		wp_register_style( self::HANDLE, plugins_url( 'assets/css/frontend.css', PLUGIN_FILE ), array(), self::asset_version( 'assets/css/frontend.css' ) );
 		wp_register_script(
 			self::HANDLE,
 			plugins_url( 'assets/js/frontend.js', PLUGIN_FILE ),
 			array(),
-			VERSION,
+			self::asset_version( 'assets/js/frontend.js' ),
 			array(
 				'in_footer' => true,
 				'strategy'  => 'defer',
 			)
 		);
+	}
+
+	/**
+	 * Cache-busting version of an asset: the plugin version, plus the file time with SCRIPT_DEBUG.
+	 *
+	 * @param string $path Path relative to the plugin folder.
+	 * @return string
+	 */
+	public static function asset_version( string $path ): string {
+		$file = dirname( PLUGIN_FILE ) . '/' . $path;
+
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG && file_exists( $file ) ) {
+			return VERSION . '-' . filemtime( $file );
+		}
+
+		return VERSION;
 	}
 
 	/**

@@ -74,8 +74,8 @@ final class Admin_Page {
 			return;
 		}
 
-		wp_enqueue_style( 'ruboja-assistants-admin', plugins_url( 'assets/css/admin.css', PLUGIN_FILE ), array(), VERSION );
-		wp_enqueue_script( 'ruboja-assistants-admin', plugins_url( 'assets/js/admin.js', PLUGIN_FILE ), array(), VERSION, true );
+		wp_enqueue_style( 'ruboja-assistants-admin', plugins_url( 'assets/css/admin.css', PLUGIN_FILE ), array(), Embed::asset_version( 'assets/css/admin.css' ) );
+		wp_enqueue_script( 'ruboja-assistants-admin', plugins_url( 'assets/js/admin.js', PLUGIN_FILE ), array(), Embed::asset_version( 'assets/js/admin.js' ), true );
 		wp_add_inline_script(
 			'ruboja-assistants-admin',
 			'window.RubojaAssistantsAdmin = ' . wp_json_encode( array( 'copied' => __( 'Copied', 'ruboja-assistants' ) ) ) . ';',
@@ -384,8 +384,9 @@ final class Admin_Page {
 		}
 
 		printf(
-			'<p class="description">%1$s</p><p class="description">%2$s</p>',
+			'<p class="description">%1$s</p><p class="description"><strong>%2$s</strong></p><p class="description">%3$s</p>',
 			esc_html__( 'Create the key in Ruboja under Settings → API keys and choose "Optional" for user attribution, otherwise anonymous visitors cannot use the assistants. The key acts with the permissions of the person who creates it, so it only lists assistants that person may use.', 'ruboja-assistants' ),
+			esc_html__( 'Ruboja greets anonymous visitors with the first name of the person who created the key. Create the key with a technical Ruboja user, for example "Website", that has access to the assistants you want to embed.', 'ruboja-assistants' ),
 			esc_html(
 				sprintf(
 					/* translators: %s: constant name. */

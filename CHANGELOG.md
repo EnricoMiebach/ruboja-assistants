@@ -7,6 +7,13 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+### Fixed
+- The status "Starting the assistant …" stays visible until Ruboja has loaded, instead of an empty white window.
+
+### Added
+- Settings: hint to create the API key with a technical Ruboja user, because Ruboja greets visitors with the key creator's first name.
+- With `SCRIPT_DEBUG`, asset URLs include the file time, so browsers never mix old and new front-end files during development.
+
 ## [0.1.2] - 2026-10-22
 
 ### Fixed

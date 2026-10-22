@@ -24,6 +24,9 @@ Der API-Schlüssel verlässt nie den Server. Er liegt verschlüsselt in der Date
 1. In Ruboja unter **Einstellungen → API-Schlüssel** einen Schlüssel erzeugen.
    Nutzer-Zuordnung **„Optional“** wählen, sonst können anonyme Besucher nichts starten.
    Der Schlüssel hat die Rechte seines Erstellers, er sieht also nur dessen Assistenten.
+   **Den Schlüssel mit einem technischen Ruboja-Nutzer erzeugen** (z. B. „Website“):
+   Ruboja begrüßt anonyme Besucher mit dem Vornamen des Schlüssel-Erstellers
+   („Hallo Enrico, schön dich zu sehen!“), und ihre Chats laufen auf dessen Konto.
 2. Plugin installieren (Zip aus dem neuesten GitHub-Release) und aktivieren.
 3. **Einstellungen → Ruboja-Assistenten**: Schlüssel eintragen, speichern. Die Liste
    der Assistenten wird geladen.

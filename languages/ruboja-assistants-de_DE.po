@@ -243,66 +243,66 @@ msgid "Create the key in Ruboja under Settings → API keys and choose \"Optiona
 msgstr "Den Schlüssel in Ruboja unter Einstellungen → API-Schlüssel erzeugen und bei der Nutzer-Zuordnung „Optional“ wählen, sonst können anonyme Besucher die Assistenten nicht nutzen. Der Schlüssel hat die Rechte der Person, die ihn erzeugt. Er listet also nur Assistenten, die diese Person nutzen darf."
 
 #. translators: %s: constant name.
-#: includes/class-admin-page.php:392
+#: includes/class-admin-page.php:393
 #, php-format
 msgid "The key is stored encrypted. Alternatively define it in wp-config.php as %s."
 msgstr "Der Schlüssel wird verschlüsselt gespeichert. Alternativ in der wp-config.php als %s festlegen."
 
-#: includes/class-admin-page.php:407
+#: includes/class-admin-page.php:408
 msgid "No assistants loaded yet. Save an API key, then click \"Test connection and refresh list\"."
 msgstr "Noch keine Assistenten geladen. API-Schlüssel speichern und dann auf „Verbindung testen und Liste aktualisieren“ klicken."
 
-#: includes/class-admin-page.php:422
+#: includes/class-admin-page.php:423
 msgid "Released"
 msgstr "Freigegeben"
 
-#: includes/class-admin-page.php:423
+#: includes/class-admin-page.php:424
 #: blocks/assistant/index.js:54
 #: blocks/assistant/index.js:68
 msgid "Assistant"
 msgstr "Assistent"
 
-#: includes/class-admin-page.php:424
+#: includes/class-admin-page.php:425
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/class-admin-page.php:425
+#: includes/class-admin-page.php:426
 msgid "Logged-in users only"
 msgstr "Nur angemeldete Nutzer"
 
-#: includes/class-admin-page.php:426
+#: includes/class-admin-page.php:427
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: includes/class-admin-page.php:439
+#: includes/class-admin-page.php:440
 msgid "No longer accessible with this API key. It is not shown on the website."
 msgstr "Mit diesem API-Schlüssel nicht mehr zugänglich. Er wird auf der Website nicht angezeigt."
 
 #. translators: %s: assistant title.
-#: includes/class-admin-page.php:446
+#: includes/class-admin-page.php:447
 #, php-format
 msgid "Only for logged-in users: %s"
 msgstr "Nur für angemeldete Nutzer: %s"
 
-#: includes/class-admin-page.php:450
+#: includes/class-admin-page.php:451
 msgid "Copy"
 msgstr "Kopieren"
 
 #. translators: %s: error message from Ruboja.
-#: includes/class-admin-page.php:472
+#: includes/class-admin-page.php:473
 #, php-format
 msgid "Connection to Ruboja failed: %s"
 msgstr "Verbindung zu Ruboja fehlgeschlagen: %s"
 
 #. translators: %d: number of assistants.
-#: includes/class-admin-page.php:485
+#: includes/class-admin-page.php:486
 #, php-format
 msgid "Connected. %d assistant is accessible with this API key."
 msgid_plural "Connected. %d assistants are accessible with this API key."
 msgstr[0] "Verbunden. Mit diesem API-Schlüssel ist %d Assistent zugänglich."
 msgstr[1] "Verbunden. Mit diesem API-Schlüssel sind %d Assistenten zugänglich."
 
-#: includes/class-admin-page.php:499
+#: includes/class-admin-page.php:500
 msgid "You are not allowed to change these settings."
 msgstr "Sie dürfen diese Einstellungen nicht ändern."
 
@@ -322,32 +322,32 @@ msgstr "Es ist kein Ruboja-API-Schlüssel hinterlegt."
 msgid "Ruboja answered with HTTP status %d."
 msgstr "Ruboja hat mit HTTP-Status %d geantwortet."
 
-#: includes/class-embed.php:169
+#: includes/class-embed.php:185
 msgid "Ruboja assistant: this assistant is not released or no longer available. Check Settings → Ruboja Assistants."
 msgstr "Ruboja-Assistent: Dieser Assistent ist nicht freigegeben oder nicht mehr verfügbar. Bitte unter Einstellungen → Ruboja-Assistenten prüfen."
 
-#: includes/class-embed.php:244
+#: includes/class-embed.php:260
 msgid "Close assistant"
 msgstr "Assistent schließen"
 
-#: includes/class-embed.php:271
+#: includes/class-embed.php:287
 msgid "Start assistant"
 msgstr "Assistent starten"
 
-#: includes/class-embed.php:272
+#: includes/class-embed.php:288
 msgid "Please enable JavaScript to use the assistant."
 msgstr "Bitte aktivieren Sie JavaScript, um den Assistenten zu nutzen."
 
-#: includes/class-embed.php:295
+#: includes/class-embed.php:311
 msgid "Starting the assistant …"
 msgstr "Assistent wird gestartet …"
 
-#: includes/class-embed.php:296
+#: includes/class-embed.php:312
 #: includes/class-rest-controller.php:137
 msgid "The assistant could not be started. Please try again later."
 msgstr "Der Assistent konnte nicht gestartet werden. Bitte versuchen Sie es später noch einmal."
 
-#: includes/class-embed.php:297
+#: includes/class-embed.php:313
 msgid "Try again"
 msgstr "Erneut versuchen"
 
@@ -457,7 +457,7 @@ msgid "ki"
 msgstr "ki"
 
 #: includes/class-admin-page.php:331
-#: includes/class-updater.php:104
+#: includes/class-updater.php:110
 msgid "Release notes on GitHub"
 msgstr "Versionshinweise auf GitHub"
 
@@ -466,3 +466,7 @@ msgstr "Versionshinweise auf GitHub"
 #, php-format
 msgid "Version %s"
 msgstr "Version %s"
+
+#: includes/class-admin-page.php:389
+msgid "Ruboja greets anonymous visitors with the first name of the person who created the key. Create the key with a technical Ruboja user, for example \"Website\", that has access to the assistants you want to embed."
+msgstr "Ruboja begrüßt anonyme Besucher mit dem Vornamen der Person, die den Schlüssel erzeugt hat. Erzeugen Sie den Schlüssel daher mit einem technischen Ruboja-Nutzer, etwa „Website“, der Zugriff auf die einzubindenden Assistenten hat."

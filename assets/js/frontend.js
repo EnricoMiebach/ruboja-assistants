@@ -65,16 +65,37 @@
 		requestSession( options.assistant )
 			.then( ( session ) => {
 				const frame = document.createElement( 'iframe' );
+				const placeholder = stage.querySelector( '.ruboja-assistant__placeholder' );
+				let revealed = false;
+
+				// Ruboja needs a few seconds to load; keep the status text visible until then.
+				const reveal = () => {
+					if ( revealed ) {
+						return;
+					}
+					revealed = true;
+					frame.classList.add( 'is-loaded' );
+					root.removeAttribute( 'aria-busy' );
+
+					if ( placeholder ) {
+						placeholder.remove();
+					}
+				};
 
 				frame.className = 'ruboja-assistant__frame';
 				frame.src = session.url;
 				frame.title = options.title;
 				frame.setAttribute( 'allow', 'clipboard-read; clipboard-write; microphone' );
 				frame.setAttribute( 'referrerpolicy', 'strict-origin-when-cross-origin' );
+				frame.addEventListener( 'load', reveal, { once: true } );
+				window.setTimeout( reveal, 15000 );
 
-				stage.replaceChildren( frame );
+				if ( button ) {
+					button.hidden = true;
+				}
+
+				stage.appendChild( frame );
 				root.dataset.state = 'ready';
-				root.removeAttribute( 'aria-busy' );
 			} )
 			.catch( ( error ) => {
 				root.dataset.state = 'error';
