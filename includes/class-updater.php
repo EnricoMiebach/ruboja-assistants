@@ -69,8 +69,9 @@ final class Updater {
 			'version'      => $release['version'],
 			'url'          => $release['url'],
 			'package'      => $release['package'],
-			'requires'     => $plugin_data['RequiresWP'] ?? '',
-			'requires_php' => $plugin_data['RequiresPHP'] ?? '',
+			'tested'       => self::normalize_tested( $release['tested'] ),
+			'requires'     => '' !== $release['requires'] ? $release['requires'] : ( $plugin_data['RequiresWP'] ?? '' ),
+			'requires_php' => '' !== $release['requires_php'] ? $release['requires_php'] : ( $plugin_data['RequiresPHP'] ?? '' ),
 		);
 	}
 
@@ -93,7 +94,12 @@ final class Updater {
 
 		$plugin  = get_plugin_data( PLUGIN_FILE, false, true );
 		$release = $this->release_for( (string) ( $plugin['UpdateURI'] ?? '' ) );
-		$readme  = get_file_data( dirname( PLUGIN_FILE ) . '/readme.txt', array( 'tested' => 'Tested up to' ) );
+		$local   = self::parse_readme_headers( (string) file_get_contents( dirname( PLUGIN_FILE ) . '/readme.txt' ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local file.
+
+		// Requirements of the offered version, falling back to the installed one.
+		$requires     = null !== $release && '' !== $release['requires'] ? $release['requires'] : $plugin['RequiresWP'];
+		$requires_php = null !== $release && '' !== $release['requires_php'] ? $release['requires_php'] : $plugin['RequiresPHP'];
+		$tested       = null !== $release && '' !== $release['tested'] ? $release['tested'] : $local['tested'];
 
 		if ( null !== $release && '' !== $release['notes'] ) {
 			$changelog = self::markdown_to_html( $release['notes'] );
@@ -111,9 +117,9 @@ final class Updater {
 			'version'       => null !== $release ? $release['version'] : $plugin['Version'],
 			'author'        => $plugin['Author'],
 			'homepage'      => $plugin['PluginURI'],
-			'requires'      => $plugin['RequiresWP'],
-			'requires_php'  => $plugin['RequiresPHP'],
-			'tested'        => $readme['tested'],
+			'requires'      => $requires,
+			'requires_php'  => $requires_php,
+			'tested'        => self::normalize_tested( $tested ),
 			'last_updated'  => null !== $release ? $release['published'] : '',
 			'download_link' => null !== $release ? $release['package'] : '',
 			'sections'      => array(
@@ -149,14 +155,27 @@ final class Updater {
 	}
 
 	/**
-	 * Forgets the cached release when an admin clicks "Check again" under Dashboard → Updates.
+	 * Makes "Check again" under Dashboard → Updates look for a new release right away.
+	 *
+	 * Core forces only its own version check there; plugins are checked at most
+	 * once a minute. Opening the page and then clicking "Check again" would
+	 * therefore keep the old result, so the plugin check is forced as well.
 	 *
 	 * @return void
 	 */
 	public function clear_cache_on_force_check(): void {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only flag of core's "Check again" link.
-		if ( isset( $_GET['force-check'] ) && current_user_can( 'update_plugins' ) ) {
-			$this->clear_cache();
+		if ( ! isset( $_GET['force-check'] ) || ! current_user_can( 'update_plugins' ) ) {
+			return;
+		}
+
+		$this->clear_cache();
+
+		$current = get_site_transient( 'update_plugins' );
+
+		if ( is_object( $current ) ) {
+			$current->last_checked = 0;
+			set_site_transient( 'update_plugins', $current );
 		}
 	}
 
@@ -188,7 +207,7 @@ final class Updater {
 	 *
 	 * @param mixed $data    Decoded JSON of a release.
 	 * @param bool  $via_api Whether the asset must be fetched through the API (private repository).
-	 * @return array{version: string, url: string, package: string, notes: string, published: string}|null
+	 * @return array<string, string>|null version, tag, url, package, notes, published, tested, requires, requires_php.
 	 */
 	public static function parse_release( $data, bool $via_api ): ?array {
 		if ( ! is_array( $data ) || ! empty( $data['draft'] ) || ! empty( $data['prerelease'] ) || empty( $data['tag_name'] ) ) {
@@ -213,15 +232,59 @@ final class Updater {
 			}
 
 			return array(
-				'version'   => $version,
-				'url'       => (string) ( $data['html_url'] ?? '' ),
-				'package'   => $package,
-				'notes'     => (string) ( $data['body'] ?? '' ),
-				'published' => (string) ( $data['published_at'] ?? '' ),
+				'version'      => $version,
+				'tag'          => (string) $data['tag_name'],
+				'url'          => (string) ( $data['html_url'] ?? '' ),
+				'package'      => $package,
+				'notes'        => (string) ( $data['body'] ?? '' ),
+				'published'    => (string) ( $data['published_at'] ?? '' ),
+				// Filled from the release's readme.txt by latest_release().
+				'tested'       => '',
+				'requires'     => '',
+				'requires_php' => '',
 			);
 		}
 
 		return null;
+	}
+
+	/**
+	 * Reads the requirement headers of a readme.txt.
+	 *
+	 * @param string $readme Content of readme.txt.
+	 * @return array{tested: string, requires: string, requires_php: string}
+	 */
+	public static function parse_readme_headers( string $readme ): array {
+		$headers = array(
+			'tested'       => 'Tested up to',
+			'requires'     => 'Requires at least',
+			'requires_php' => 'Requires PHP',
+		);
+
+		foreach ( $headers as $key => $label ) {
+			$headers[ $key ] = 1 === preg_match( '/^' . preg_quote( $label, '/' ) . ':[ \t]*([0-9][0-9.]*)/mi', $readme, $matches ) ? $matches[1] : '';
+		}
+
+		return $headers;
+	}
+
+	/**
+	 * Expands "Tested up to: 7.1" to the running 7.1.x, like WordPress.org does.
+	 *
+	 * Otherwise WordPress 7.1.3 counts as newer than 7.1 and warns that the
+	 * plugin was not tested with it.
+	 *
+	 * @param string $tested Value from readme.txt.
+	 * @return string
+	 */
+	public static function normalize_tested( string $tested ): string {
+		$running = (string) get_bloginfo( 'version' );
+
+		if ( 1 === preg_match( '/^\d+\.\d+$/', $tested ) && 0 === strpos( $running, $tested . '.' ) ) {
+			return $running;
+		}
+
+		return $tested;
 	}
 
 	/**
@@ -280,7 +343,7 @@ final class Updater {
 	 * Latest release of the repository named in the Update URI.
 	 *
 	 * @param string $update_uri Value of the Update URI header.
-	 * @return array{version: string, url: string, package: string, notes: string, published: string}|null
+	 * @return array<string, string>|null See parse_release().
 	 */
 	private function release_for( string $update_uri ): ?array {
 		$repository = self::repository( $update_uri );
@@ -289,15 +352,17 @@ final class Updater {
 	}
 
 	/**
-	 * Fetches the latest release, cached for a few hours.
+	 * Fetches the latest release and its readme.txt headers, cached for a few hours.
 	 *
 	 * @param string $repository owner/repo.
-	 * @return array{version: string, url: string, package: string, notes: string, published: string}|null
+	 * @return array<string, string>|null See parse_release().
 	 */
 	private function latest_release( string $repository ): ?array {
 		$cached = get_site_transient( self::CACHE_KEY );
 
-		if ( is_array( $cached ) && ( $cached['repository'] ?? '' ) === $repository ) {
+		// Entries written by 0.1.0/0.1.1 lack the readme fields and are fetched again.
+		if ( is_array( $cached ) && ( $cached['repository'] ?? '' ) === $repository
+			&& ( null === $cached['release'] || isset( $cached['release']['tested'] ) ) ) {
 			return $cached['release'];
 		}
 
@@ -313,6 +378,20 @@ final class Updater {
 
 		if ( ! is_wp_error( $response ) && 200 === (int) wp_remote_retrieve_response_code( $response ) ) {
 			$release = self::parse_release( json_decode( wp_remote_retrieve_body( $response ), true ), '' !== self::token() );
+		}
+
+		if ( null !== $release ) {
+			$readme = wp_remote_get(
+				'https://api.github.com/repos/' . $repository . '/contents/readme.txt?ref=' . rawurlencode( $release['tag'] ),
+				array(
+					'timeout' => 10,
+					'headers' => array( 'Accept' => 'application/vnd.github.raw' ),
+				)
+			);
+
+			if ( ! is_wp_error( $readme ) && 200 === (int) wp_remote_retrieve_response_code( $readme ) ) {
+				$release = array_merge( $release, self::parse_readme_headers( wp_remote_retrieve_body( $readme ) ) );
+			}
 		}
 
 		// Cache failures too, so a missing repository does not slow down every admin request.

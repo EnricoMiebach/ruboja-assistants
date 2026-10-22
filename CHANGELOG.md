@@ -7,6 +7,12 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-22
+
+### Fixed
+- "Check again" under Dashboard → Updates now finds a new release right away, even if the page was opened a moment before.
+- Updates and "View details" use "Tested up to" and the requirements from the readme.txt of the new release, so WordPress 7.1.x no longer reports the plugin as untested.
+
 ## [0.1.1] - 2026-10-22
 
 ### Added

@@ -4,7 +4,7 @@ Tags: ai, chat, assistant, chatbot, ruboja
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,10 @@ All assistants the creator of the API key may use in Ruboja. Only those you rele
 No. Without user attribution the chat runs anonymously on the account of the key creator.
 
 == Changelog ==
+
+= 0.1.2 =
+* "Check again" finds new releases right away.
+* Compatibility data comes from the readme.txt of the new release.
 
 = 0.1.1 =
 * The settings page shows the installed version with a link to the release notes.

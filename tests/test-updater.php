@@ -47,15 +47,18 @@ class Test_Updater extends WP_UnitTestCase {
 	 */
 	public function fake_github( $preempt, $args, $url ) {
 		// Any repository: plugin_information() reads the real Update URI header.
-		if ( 1 !== preg_match( '#^https://api\.github\.com/repos/[^/]+/[^/]+/releases/latest$#', $url ) ) {
+		if ( 1 === preg_match( '#^https://api\.github\.com/repos/[^/]+/[^/]+/contents/readme\.txt\?ref=v9\.9\.9$#', $url ) ) {
+			$body = "=== Ruboja Assistants ===\nRequires at least: 6.5\nTested up to: 7.1\nRequires PHP: 8.0\n";
+		} elseif ( 1 === preg_match( '#^https://api\.github\.com/repos/[^/]+/[^/]+/releases/latest$#', $url ) ) {
+			++$this->github_requests;
+			$body = wp_json_encode( $this->release() );
+		} else {
 			return $preempt;
 		}
 
-		++$this->github_requests;
-
 		return array(
 			'headers'  => array(),
-			'body'     => wp_json_encode( $this->release() ),
+			'body'     => $body,
 			'response' => array(
 				'code'    => 200,
 				'message' => 'OK',
@@ -94,11 +97,52 @@ class Test_Updater extends WP_UnitTestCase {
 
 		$this->assertSame( '9.9.9', $update['version'] );
 		$this->assertSame( 'ruboja-assistants', $update['slug'] );
+		$this->assertSame( '6.5', $update['requires'], 'Requirements come from the readme.txt of the release.' );
+		$this->assertSame( '8.0', $update['requires_php'] );
+		$this->assertStringStartsWith( '7.1', $update['tested'] );
 
 		$updater->check_update( false, $data, $file );
 		$this->assertSame( 1, $this->github_requests, 'The release must be cached.' );
 
 		$this->assertFalse( $updater->check_update( false, $data, 'other/plugin.php' ) );
+	}
+
+	public function test_readme_headers_and_tested_version() {
+		$headers = Updater::parse_readme_headers( "Requires at least: 6.3\r\nTested up to: 7.1\r\nRequires PHP: 7.4\r\nStable tag: 0.1.1" );
+
+		$this->assertSame(
+			array(
+				'tested'       => '7.1',
+				'requires'     => '6.3',
+				'requires_php' => '7.4',
+			),
+			$headers
+		);
+
+		$running = get_bloginfo( 'version' );
+		$minor   = implode( '.', array_slice( explode( '.', $running ), 0, 2 ) );
+
+		if ( $minor !== $running ) {
+			$this->assertSame( $running, Updater::normalize_tested( $minor ) );
+		}
+		$this->assertSame( '5.0', Updater::normalize_tested( '5.0' ) );
+		$this->assertSame( '', Updater::normalize_tested( '' ) );
+	}
+
+	public function test_old_cache_entries_without_readme_fields_are_refreshed() {
+		set_site_transient(
+			Updater::CACHE_KEY,
+			array(
+				'repository' => 'owner/repo',
+				'release'    => array( 'version' => '0.1.1' ),
+			),
+			HOUR_IN_SECONDS
+		);
+
+		$update = ( new Updater() )->check_update( false, array( 'UpdateURI' => self::UPDATE_URI ), plugin_basename( Siteware\RubojaAssistants\PLUGIN_FILE ) );
+
+		$this->assertSame( '9.9.9', $update['version'] );
+		$this->assertSame( 1, $this->github_requests );
 	}
 
 	public function test_git_checkouts_are_not_offered_updates() {
@@ -113,8 +157,15 @@ class Test_Updater extends WP_UnitTestCase {
 		remove_filter( 'ruboja_assistants_is_git_checkout', '__return_true' );
 	}
 
-	public function test_force_check_clears_the_cache() {
+	public function test_force_check_clears_the_cache_and_forces_the_plugin_check() {
 		set_site_transient( Updater::CACHE_KEY, array( 'repository' => 'owner/repo' ), HOUR_IN_SECONDS );
+		set_site_transient(
+			'update_plugins',
+			(object) array(
+				'last_checked' => time(),
+				'response'     => array(),
+			)
+		);
 		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
 		$_GET['force-check'] = '1';
 
@@ -122,6 +173,17 @@ class Test_Updater extends WP_UnitTestCase {
 
 		unset( $_GET['force-check'] );
 		$this->assertFalse( get_site_transient( Updater::CACHE_KEY ) );
+		$this->assertSame( 0, get_site_transient( 'update_plugins' )->last_checked, 'Core must not skip the next plugin check.' );
+	}
+
+	public function test_force_check_needs_the_capability() {
+		set_site_transient( Updater::CACHE_KEY, array( 'repository' => 'owner/repo' ), HOUR_IN_SECONDS );
+		$_GET['force-check'] = '1';
+
+		( new Updater() )->clear_cache_on_force_check();
+
+		unset( $_GET['force-check'] );
+		$this->assertNotFalse( get_site_transient( Updater::CACHE_KEY ) );
 	}
 
 	public function test_details_dialog_shows_release_notes() {
