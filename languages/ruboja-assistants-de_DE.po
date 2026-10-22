@@ -1,5 +1,3 @@
-# Copyright (C) 2026 Siteware GmbH
-# This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Ruboja Assistants 0.1.0\n"
@@ -11,10 +9,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-10-22T14:32:37+00:00\n"
 "PO-Revision-Date: 2026-10-22 16:30+0200\n"
+"Language: de_DE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ruboja-assistants\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: de_DE\n"
 
 #. Plugin Name of the plugin
 #: ruboja-assistants.php
@@ -65,256 +63,246 @@ msgid "API key"
 msgstr "API-Schlüssel"
 
 #: includes/class-admin-page.php:177
-msgid "API base URL"
-msgstr "API-Basis-URL"
-
-#. translators: %s: default API base URL.
-#: includes/class-admin-page.php:184
-#, php-format
-msgid "Only change this if Ruboja tells you to. Default: %s"
-msgstr "Nur ändern, wenn Ruboja das vorgibt. Standard: %s"
-
-#: includes/class-admin-page.php:192
 msgid "Status"
 msgstr "Status"
 
 #. translators: 1: date and time, 2: number of assistants.
-#: includes/class-admin-page.php:199
+#: includes/class-admin-page.php:184
 #, php-format
 msgid "Last refreshed %1$s, %2$d assistants accessible."
 msgstr "Zuletzt aktualisiert am %1$s, %2$d Assistenten zugänglich."
 
-#: includes/class-admin-page.php:211
+#: includes/class-admin-page.php:196
 msgid "Not connected yet."
 msgstr "Noch nicht verbunden."
 
-#: includes/class-admin-page.php:215
+#: includes/class-admin-page.php:200
 msgid "Test connection and refresh list"
 msgstr "Verbindung testen und Liste aktualisieren"
 
-#: includes/class-admin-page.php:220
+#: includes/class-admin-page.php:205
 msgid "Released assistants"
 msgstr "Freigegebene Assistenten"
 
-#: includes/class-admin-page.php:221
+#: includes/class-admin-page.php:206
 msgid "Only released assistants can be embedded. All other assistants of your organization stay private, even if someone knows their id."
 msgstr "Nur freigegebene Assistenten lassen sich einbinden. Alle anderen Assistenten Ihrer Organisation bleiben privat, auch wenn jemand ihre ID kennt."
 
-#: includes/class-admin-page.php:224
+#: includes/class-admin-page.php:209
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: includes/class-admin-page.php:227
+#: includes/class-admin-page.php:212
 msgid "Load on click"
 msgstr "Laden nach Klick"
 
-#: includes/class-admin-page.php:231
+#: includes/class-admin-page.php:216
 msgid "Show a notice first and connect to Ruboja only after the visitor clicks \"Start assistant\" (recommended)"
 msgstr "Zuerst einen Hinweis zeigen und erst nach Klick auf „Assistent starten“ mit Ruboja verbinden (empfohlen)"
 
-#: includes/class-admin-page.php:236
+#: includes/class-admin-page.php:221
 msgid "Notice text"
 msgstr "Hinweistext"
 
-#: includes/class-admin-page.php:239
+#: includes/class-admin-page.php:224
 msgid "Leave empty to use the default text. Mention your privacy policy here if needed."
 msgstr "Leer lassen für den Standardtext. Bei Bedarf hier auf Ihre Datenschutzerklärung hinweisen."
 
-#: includes/class-admin-page.php:243
+#: includes/class-admin-page.php:228
 msgid "Conversation history"
 msgstr "Gesprächsverlauf"
 
-#: includes/class-admin-page.php:247
+#: includes/class-admin-page.php:232
 msgid "Returning visitors see their earlier conversations"
 msgstr "Wiederkehrende Besucher sehen ihre früheren Unterhaltungen"
 
-#: includes/class-admin-page.php:251
+#: includes/class-admin-page.php:236
 msgid "Remember visitors for"
 msgstr "Besucher wiedererkennen für"
 
-#: includes/class-admin-page.php:253
+#: includes/class-admin-page.php:238
 msgid "days"
 msgstr "Tage"
 
-#: includes/class-admin-page.php:256
+#: includes/class-admin-page.php:241
 msgid "Sets a functional cookie with a random id. Anyone using the same browser sees these conversations, so keep this off for sensitive topics or shared computers."
 msgstr "Setzt ein funktionales Cookie mit einer Zufalls-ID. Wer denselben Browser nutzt, sieht diese Unterhaltungen. Bei sensiblen Themen oder gemeinsam genutzten Rechnern daher ausgeschaltet lassen."
 
-#: includes/class-admin-page.php:260
+#: includes/class-admin-page.php:245
 msgid "User attribution"
 msgstr "Nutzer-Zuordnung"
 
-#: includes/class-admin-page.php:263
+#: includes/class-admin-page.php:248
 msgid "None: all visitors chat anonymously"
 msgstr "Keine: alle Besucher chatten anonym"
 
-#: includes/class-admin-page.php:264
+#: includes/class-admin-page.php:249
 msgid "Logged-in WordPress users by e-mail address"
 msgstr "Angemeldete WordPress-Nutzer per E-Mail-Adresse"
 
-#: includes/class-admin-page.php:266
+#: includes/class-admin-page.php:251
 msgid "For intranets: the e-mail address of the logged-in user is sent to Ruboja, and the conversation appears in that Ruboja user's history."
 msgstr "Für Intranets: Die E-Mail-Adresse des angemeldeten Nutzers geht an Ruboja, und die Unterhaltung erscheint im Verlauf dieses Ruboja-Nutzers."
 
-#: includes/class-admin-page.php:270
+#: includes/class-admin-page.php:255
 msgid "Rate limit"
 msgstr "Begrenzung"
 
-#: includes/class-admin-page.php:273
+#: includes/class-admin-page.php:258
 msgid "assistant starts per visitor IP address and hour (0 = unlimited)"
 msgstr "Assistenten-Starts je Besucher-IP und Stunde (0 = unbegrenzt)"
 
-#: includes/class-admin-page.php:278
+#: includes/class-admin-page.php:263
 msgid "Appearance"
 msgstr "Darstellung"
 
-#: includes/class-admin-page.php:281
+#: includes/class-admin-page.php:266
 #: blocks/assistant/index.js:121
 msgid "Accent color"
 msgstr "Akzentfarbe"
 
-#: includes/class-admin-page.php:284
+#: includes/class-admin-page.php:269
 msgid "Used for buttons and the header of the floating window. Can be overridden per block or shortcode."
 msgstr "Für Buttons und die Kopfzeile des schwebenden Fensters. Lässt sich je Block oder Shortcode überschreiben."
 
-#: includes/class-admin-page.php:288
+#: includes/class-admin-page.php:273
 msgid "Floating assistant on every page"
 msgstr "Schwebender Assistent auf allen Seiten"
 
-#: includes/class-admin-page.php:291
+#: includes/class-admin-page.php:276
 msgid "None"
 msgstr "Keiner"
 
-#: includes/class-admin-page.php:298
+#: includes/class-admin-page.php:283
 #: blocks/assistant/index.js:98
 msgid "Button label"
 msgstr "Button-Beschriftung"
 
-#: includes/class-admin-page.php:299
+#: includes/class-admin-page.php:284
 msgid "Title of the assistant"
 msgstr "Titel des Assistenten"
 
-#: includes/class-admin-page.php:303
+#: includes/class-admin-page.php:288
 #: blocks/assistant/index.js:108
 msgid "Bottom right"
 msgstr "Unten rechts"
 
-#: includes/class-admin-page.php:305
+#: includes/class-admin-page.php:290
 #: blocks/assistant/index.js:109
 msgid "Bottom left"
 msgstr "Unten links"
 
-#: includes/class-admin-page.php:307
+#: includes/class-admin-page.php:292
 msgid "Only released assistants are listed. Save after releasing an assistant to see it here."
 msgstr "Hier stehen nur freigegebene Assistenten. Nach dem Freigeben erst speichern, dann erscheint er hier."
 
-#: includes/class-admin-page.php:315
+#: includes/class-admin-page.php:300
 msgid "Embedding"
 msgstr "Einbindung"
 
-#: includes/class-admin-page.php:316
+#: includes/class-admin-page.php:301
 msgid "In the block editor, add the block \"Ruboja Assistant\" and choose an assistant. Elsewhere, use the shortcode:"
 msgstr "Im Block-Editor den Block „Ruboja-Assistent“ einfügen und einen Assistenten wählen. Überall sonst den Shortcode verwenden:"
 
-#: includes/class-admin-page.php:318
+#: includes/class-admin-page.php:303
 msgid "inline in the content"
 msgstr "inline im Inhalt"
 
-#: includes/class-admin-page.php:319
+#: includes/class-admin-page.php:304
 msgid "as a floating chat button"
 msgstr "als schwebender Chat-Button"
 
-#: includes/class-admin-page.php:320
+#: includes/class-admin-page.php:305
 msgid "optional attributes"
 msgstr "optionale Attribute"
 
 #. translators: %s: constant name.
-#: includes/class-admin-page.php:339
+#: includes/class-admin-page.php:324
 #, php-format
 msgid "is defined in wp-config.php (%s) and cannot be changed here."
 msgstr "ist in der wp-config.php festgelegt (%s) und lässt sich hier nicht ändern."
 
-#: includes/class-admin-page.php:352
+#: includes/class-admin-page.php:337
 msgid "The stored API key can no longer be read, probably because the security keys in wp-config.php changed. Please enter the key again."
 msgstr "Der gespeicherte API-Schlüssel lässt sich nicht mehr lesen, vermutlich weil sich die Sicherheitsschlüssel in der wp-config.php geändert haben. Bitte den Schlüssel neu eintragen."
 
-#: includes/class-admin-page.php:359
+#: includes/class-admin-page.php:344
 msgid "Stored key:"
 msgstr "Gespeicherter Schlüssel:"
 
-#: includes/class-admin-page.php:366
+#: includes/class-admin-page.php:351
 msgid "Enter a new key to replace it"
 msgstr "Neuen Schlüssel eingeben, um ihn zu ersetzen"
 
-#: includes/class-admin-page.php:372
+#: includes/class-admin-page.php:357
 msgid "Remove stored key"
 msgstr "Gespeicherten Schlüssel entfernen"
 
-#: includes/class-admin-page.php:378
+#: includes/class-admin-page.php:363
 msgid "Create the key in Ruboja under Settings → API keys and choose \"Optional\" for user attribution, otherwise anonymous visitors cannot use the assistants. The key acts with the permissions of the person who creates it, so it only lists assistants that person may use."
 msgstr "Den Schlüssel in Ruboja unter Einstellungen → API-Schlüssel erzeugen und bei der Nutzer-Zuordnung „Optional“ wählen, sonst können anonyme Besucher die Assistenten nicht nutzen. Der Schlüssel hat die Rechte der Person, die ihn erzeugt. Er listet also nur Assistenten, die diese Person nutzen darf."
 
 #. translators: %s: constant name.
-#: includes/class-admin-page.php:382
+#: includes/class-admin-page.php:367
 #, php-format
 msgid "The key is stored encrypted. Alternatively define it in wp-config.php as %s."
 msgstr "Der Schlüssel wird verschlüsselt gespeichert. Alternativ in der wp-config.php als %s festlegen."
 
-#: includes/class-admin-page.php:397
+#: includes/class-admin-page.php:382
 msgid "No assistants loaded yet. Save an API key, then click \"Test connection and refresh list\"."
 msgstr "Noch keine Assistenten geladen. API-Schlüssel speichern und dann auf „Verbindung testen und Liste aktualisieren“ klicken."
 
-#: includes/class-admin-page.php:412
+#: includes/class-admin-page.php:397
 msgid "Released"
 msgstr "Freigegeben"
 
-#: includes/class-admin-page.php:413
+#: includes/class-admin-page.php:398
 #: blocks/assistant/index.js:54
 #: blocks/assistant/index.js:68
 msgid "Assistant"
 msgstr "Assistent"
 
-#: includes/class-admin-page.php:414
+#: includes/class-admin-page.php:399
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/class-admin-page.php:415
+#: includes/class-admin-page.php:400
 msgid "Logged-in users only"
 msgstr "Nur angemeldete Nutzer"
 
-#: includes/class-admin-page.php:416
+#: includes/class-admin-page.php:401
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: includes/class-admin-page.php:429
+#: includes/class-admin-page.php:414
 msgid "No longer accessible with this API key. It is not shown on the website."
 msgstr "Mit diesem API-Schlüssel nicht mehr zugänglich. Er wird auf der Website nicht angezeigt."
 
 #. translators: %s: assistant title.
-#: includes/class-admin-page.php:436
+#: includes/class-admin-page.php:421
 #, php-format
 msgid "Only for logged-in users: %s"
 msgstr "Nur für angemeldete Nutzer: %s"
 
-#: includes/class-admin-page.php:440
+#: includes/class-admin-page.php:425
 msgid "Copy"
 msgstr "Kopieren"
 
 #. translators: %s: error message from Ruboja.
-#: includes/class-admin-page.php:462
+#: includes/class-admin-page.php:447
 #, php-format
 msgid "Connection to Ruboja failed: %s"
 msgstr "Verbindung zu Ruboja fehlgeschlagen: %s"
 
 #. translators: %d: number of assistants.
-#: includes/class-admin-page.php:475
+#: includes/class-admin-page.php:460
 #, php-format
 msgid "Connected. %d assistant is accessible with this API key."
 msgid_plural "Connected. %d assistants are accessible with this API key."
 msgstr[0] "Verbunden. Mit diesem API-Schlüssel ist %d Assistent zugänglich."
 msgstr[1] "Verbunden. Mit diesem API-Schlüssel sind %d Assistenten zugänglich."
 
-#: includes/class-admin-page.php:489
+#: includes/class-admin-page.php:474
 msgid "You are not allowed to change these settings."
 msgstr "Sie dürfen diese Einstellungen nicht ändern."
 
@@ -375,7 +363,7 @@ msgstr "Bitte melden Sie sich an, um diesen Assistenten zu nutzen."
 msgid "Too many requests. Please try again later."
 msgstr "Zu viele Anfragen. Bitte versuchen Sie es später noch einmal."
 
-#: includes/class-settings.php:301
+#: includes/class-settings.php:321
 msgid "This assistant is provided by Ruboja. When you start it, your input and any files you upload are transmitted to Ruboja and processed by an AI model. Please do not enter information you do not want to share."
 msgstr "Dieser Assistent wird über Ruboja bereitgestellt. Wenn Sie ihn starten, werden Ihre Eingaben und hochgeladenen Dateien an Ruboja übertragen und von einem KI-Modell verarbeitet. Bitte geben Sie nichts ein, was Sie nicht teilen möchten."
 
@@ -468,3 +456,6 @@ msgctxt "block keyword"
 msgid "ki"
 msgstr "ki"
 
+#: includes/class-updater.php:104
+msgid "Release notes on GitHub"
+msgstr "Versionshinweise auf GitHub"

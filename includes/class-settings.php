@@ -20,6 +20,7 @@ final class Settings {
 	const OPTION_ASSISTANTS = 'ruboja_assistants_assistants';
 	const OPTION_LAST_SYNC  = 'ruboja_assistants_last_sync';
 	const API_KEY_CONSTANT  = 'RUBOJA_ASSISTANTS_API_KEY';
+	const API_BASE_CONSTANT = 'RUBOJA_ASSISTANTS_API_BASE';
 	const DEFAULT_API_BASE  = 'https://api.ruboja.de/api/v1';
 	const DEFAULT_COLOR     = '#1f3a5f';
 
@@ -30,7 +31,6 @@ final class Settings {
 	 */
 	public static function defaults(): array {
 		return array(
-			'api_base'         => self::DEFAULT_API_BASE,
 			'color'            => self::DEFAULT_COLOR,
 			'consent_required' => true,
 			'consent_text'     => '',
@@ -86,12 +86,10 @@ final class Settings {
 	public static function sanitize( array $input ): array {
 		$defaults = self::defaults();
 
-		$api_base = isset( $input['api_base'] ) ? esc_url_raw( trim( (string) $input['api_base'] ), array( 'https' ) ) : '';
-		$color    = isset( $input['color'] ) ? sanitize_hex_color( (string) $input['color'] ) : '';
-		$global   = isset( $input['global_assistant'] ) ? strtolower( (string) $input['global_assistant'] ) : '';
+		$color  = isset( $input['color'] ) ? sanitize_hex_color( (string) $input['color'] ) : '';
+		$global = isset( $input['global_assistant'] ) ? strtolower( (string) $input['global_assistant'] ) : '';
 
 		return array(
-			'api_base'         => '' !== $api_base ? untrailingslashit( $api_base ) : $defaults['api_base'],
 			'color'            => $color ? $color : $defaults['color'],
 			'consent_required' => ! empty( $input['consent_required'] ),
 			'consent_text'     => isset( $input['consent_text'] ) ? sanitize_textarea_field( (string) $input['consent_text'] ) : '',
@@ -103,6 +101,28 @@ final class Settings {
 			'global_label'     => isset( $input['global_label'] ) ? sanitize_text_field( (string) $input['global_label'] ) : '',
 			'global_position'  => ( isset( $input['global_position'] ) && 'left' === $input['global_position'] ) ? 'left' : 'right',
 		);
+	}
+
+	/**
+	 * Base URL of the Ruboja API.
+	 *
+	 * Fixed to the official endpoint. For a test system it can be changed with the
+	 * constant RUBOJA_ASSISTANTS_API_BASE in wp-config.php or the filter
+	 * ruboja_assistants_api_base. Only https URLs are accepted.
+	 *
+	 * @return string URL without trailing slash.
+	 */
+	public static function api_base(): string {
+		$base = defined( self::API_BASE_CONSTANT ) ? (string) constant( self::API_BASE_CONSTANT ) : self::DEFAULT_API_BASE;
+
+		/**
+		 * Filters the base URL of the Ruboja API.
+		 *
+		 * @param string $base Base URL.
+		 */
+		$base = esc_url_raw( trim( (string) apply_filters( 'ruboja_assistants_api_base', $base ) ), array( 'https' ) );
+
+		return '' !== $base ? untrailingslashit( $base ) : self::DEFAULT_API_BASE;
 	}
 
 	/**

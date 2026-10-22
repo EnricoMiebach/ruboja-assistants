@@ -36,6 +36,13 @@ Schlüssel per `wp-config.php` statt Datenbank:
 define( 'RUBOJA_ASSISTANTS_API_KEY', 'sk_live_…' );
 ```
 
+Die API-Adresse ist fest `https://api.ruboja.de/api/v1` und erscheint nicht in den
+Einstellungen. Nur für ein Ruboja-Testsystem lässt sie sich überschreiben (nur https):
+
+```php
+define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
+```
+
 ### Shortcode
 
 ```text
@@ -97,27 +104,33 @@ Aufbau:
 
 ## Versionierung und Releases
 
-- Versionen nach [SemVer](https://semver.org/), Änderungen in `CHANGELOG.md`.
-- Für ein Release die Version an **drei Stellen** anheben: Header `Version:` und
-  `const VERSION` in `ruboja-assistants.php`, `Stable tag:` in `readme.txt`
-  (dazu `package.json` und `blocks/assistant/block.json`).
-- Commit, dann Tag pushen:
+Versionen folgen [SemVer](https://semver.org/). Ein Release in vier Schritten:
 
-  ```bash
-  git tag v0.2.0
-  git push origin main --tags
-  ```
+```bash
+bin/bump-version.sh 0.2.0     # Version in allen Dateien setzen
+# CHANGELOG.md: Abschnitt "## [0.2.0] - JJJJ-MM-TT" anlegen (wird zum Release-Text)
+git commit -am "Release 0.2.0"
+git tag v0.2.0 && git push origin main v0.2.0
+```
 
-- Der Workflow `release.yml` prüft, dass Tag und Versionen übereinstimmen, baut
-  `ruboja-assistants.zip` und veröffentlicht das GitHub-Release.
-- WordPress-Seiten mit installiertem Plugin zeigen das Update unter
-  **Dashboard → Aktualisierungen** an. Grundlage ist der Header `Update URI`
-  (`https://github.com/<owner>/<repo>`). Bei einem privaten Repository in
-  `wp-config.php` ein Token mit Lesezugriff hinterlegen:
+Der Workflow `release.yml` prüft, dass Tag und Versionen übereinstimmen, nimmt den
+CHANGELOG-Abschnitt als Release-Text, baut `ruboja-assistants.zip` und veröffentlicht
+das GitHub-Release.
 
-  ```php
-  define( 'RUBOJA_ASSISTANTS_GITHUB_TOKEN', 'github_pat_…' );
-  ```
+### Updates in WordPress
+
+- Installierte Seiten zeigen die neue Version unter **Plugins** („Jetzt aktualisieren“)
+  und unter **Dashboard → Aktualisierungen**. Automatische Updates lassen sich in der
+  Plugin-Liste einschalten. Grundlage ist der Header `Update URI`
+  (`https://github.com/EnricoMiebach/ruboja-assistants`), das Repository ist öffentlich.
+- WordPress fragt etwa alle 12 Stunden nach, das Plugin merkt sich das Release
+  6 Stunden. Sofort geht es mit **Dashboard → Aktualisierungen → Erneut prüfen**.
+- „Details ansehen“ zeigt die Release-Notizen.
+- Eine Kopie mit `.git`-Ordner (Entwicklung, wp-env) bekommt nie ein Update angeboten,
+  damit WordPress kein Arbeitsverzeichnis überschreibt. Updates also immer an einer
+  Installation aus der Release-Zip testen.
+- Bei einem privaten Repository bräuchte jede Seite ein Token mit Lesezugriff:
+  `define( 'RUBOJA_ASSISTANTS_GITHUB_TOKEN', 'github_pat_…' );` (nicht getestet).
 
 ## Lizenz
 

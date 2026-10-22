@@ -26,10 +26,24 @@ jobs:
           test "$TAG_VERSION" = "$CONST_VERSION"
           test "$TAG_VERSION" = "$STABLE_TAG"
 
+      - name: Take release notes from CHANGELOG.md
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v v="$VERSION" '
+            $0 ~ "^## \\[" v "\\]" { found = 1; next }
+            found && /^## \[/ { exit }
+            found { print }
+          ' CHANGELOG.md > release-notes.md
+          if ! grep -q '[^[:space:]]' release-notes.md; then
+            echo "CHANGELOG.md has no section \"## [$VERSION]\"" >&2
+            exit 1
+          fi
+          cat release-notes.md
+
       - name: Build zip
         run: bash bin/build-zip.sh
 
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" dist/ruboja-assistants.zip --title "$GITHUB_REF_NAME" --generate-notes --verify-tag
+        run: gh release create "$GITHUB_REF_NAME" dist/ruboja-assistants.zip --title "$GITHUB_REF_NAME" --notes-file release-notes.md --verify-tag

@@ -49,7 +49,7 @@ final class Api_Client {
 	 * @return Api_Client
 	 */
 	public static function from_settings(): Api_Client {
-		return new self( (string) Settings::get( 'api_base' ), Settings::get_api_key() );
+		return new self( Settings::api_base(), Settings::get_api_key() );
 	}
 
 	/**

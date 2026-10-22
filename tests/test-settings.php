@@ -42,7 +42,6 @@ class Test_Settings extends WP_UnitTestCase {
 	public function test_sanitize_falls_back_to_safe_values() {
 		$clean = Settings::sanitize(
 			array(
-				'api_base'         => 'http://insecure.example.com',
 				'color'            => 'red',
 				'rate_limit'       => '-5',
 				'history_days'     => '9999',
@@ -52,7 +51,7 @@ class Test_Settings extends WP_UnitTestCase {
 			)
 		);
 
-		$this->assertSame( Settings::DEFAULT_API_BASE, $clean['api_base'] );
+		$this->assertArrayNotHasKey( 'api_base', $clean, 'The API base URL is not a user setting.' );
 		$this->assertSame( Settings::DEFAULT_COLOR, $clean['color'] );
 		$this->assertSame( 0, $clean['rate_limit'] );
 		$this->assertSame( 365, $clean['history_days'] );
@@ -60,6 +59,24 @@ class Test_Settings extends WP_UnitTestCase {
 		$this->assertSame( '', $clean['global_assistant'] );
 		$this->assertSame( 'right', $clean['global_position'] );
 		$this->assertFalse( $clean['consent_required'] );
+	}
+
+	public function test_api_base_is_fixed_unless_filtered_to_https() {
+		$this->assertSame( Settings::DEFAULT_API_BASE, Settings::api_base() );
+
+		$staging = static function () {
+			return 'https://staging.example.com/api/v1/';
+		};
+		add_filter( 'ruboja_assistants_api_base', $staging );
+		$this->assertSame( 'https://staging.example.com/api/v1', Settings::api_base() );
+		remove_filter( 'ruboja_assistants_api_base', $staging );
+
+		$insecure = static function () {
+			return 'http://insecure.example.com';
+		};
+		add_filter( 'ruboja_assistants_api_base', $insecure );
+		$this->assertSame( Settings::DEFAULT_API_BASE, Settings::api_base() );
+		remove_filter( 'ruboja_assistants_api_base', $insecure );
 	}
 
 	public function test_merge_keeps_flags_and_marks_missing_assistants() {

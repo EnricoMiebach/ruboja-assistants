@@ -1,16 +1,15 @@
 <?php
 /**
- * Tests for the front-end markup and the updater.
+ * Tests for the front-end markup.
  *
  * @package RubojaAssistants
  */
 
 use Siteware\RubojaAssistants\Embed;
 use Siteware\RubojaAssistants\Settings;
-use Siteware\RubojaAssistants\Updater;
 
 /**
- * Shortcode, block rendering and release parsing.
+ * Shortcode and block rendering.
  */
 class Test_Embed extends WP_UnitTestCase {
 
@@ -72,37 +71,5 @@ class Test_Embed extends WP_UnitTestCase {
 		$this->assertSame( '#ffffff', Embed::contrast_color( '#1f3a5f' ) );
 		$this->assertSame( '#111111', Embed::contrast_color( '#ffd700' ) );
 		$this->assertSame( '#111111', Embed::contrast_color( '#fff' ) );
-	}
-
-	public function test_updater_reads_repository_and_release() {
-		$this->assertSame( 'owner/repo', Updater::repository( 'https://github.com/owner/repo' ) );
-		$this->assertSame( '', Updater::repository( 'https://example.com/owner/repo' ) );
-
-		$release = Updater::parse_release(
-			array(
-				'tag_name' => 'v1.2.3',
-				'html_url' => 'https://github.com/owner/repo/releases/tag/v1.2.3',
-				'assets'   => array(
-					array(
-						'name'                 => 'ruboja-assistants.zip',
-						'url'                  => 'https://api.github.com/repos/owner/repo/releases/assets/1',
-						'browser_download_url' => 'https://github.com/owner/repo/releases/download/v1.2.3/ruboja-assistants.zip',
-					),
-				),
-			),
-			false
-		);
-
-		$this->assertSame( '1.2.3', $release['version'] );
-		$this->assertStringEndsWith( '/ruboja-assistants.zip', $release['package'] );
-		$this->assertNull(
-			Updater::parse_release(
-				array(
-					'tag_name'   => 'v1.2.3',
-					'prerelease' => true,
-				),
-				false
-			)
-		);
 	}
 }

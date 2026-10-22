@@ -174,21 +174,6 @@ final class Admin_Page {
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="ruboja-assistants-api-base"><?php esc_html_e( 'API base URL', 'ruboja-assistants' ); ?></label></th>
-						<td>
-							<input type="url" class="regular-text code" id="ruboja-assistants-api-base" name="ruboja_assistants[api_base]" value="<?php echo esc_attr( $settings['api_base'] ); ?>">
-							<p class="description">
-								<?php
-								printf(
-									/* translators: %s: default API base URL. */
-									esc_html__( 'Only change this if Ruboja tells you to. Default: %s', 'ruboja-assistants' ),
-									'<code>' . esc_html( Settings::DEFAULT_API_BASE ) . '</code>'
-								);
-								?>
-							</p>
-						</td>
-					</tr>
-					<tr>
 						<th scope="row"><?php esc_html_e( 'Status', 'ruboja-assistants' ); ?></th>
 						<td>
 							<p>
