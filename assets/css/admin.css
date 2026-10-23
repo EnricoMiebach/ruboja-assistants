@@ -84,22 +84,10 @@
 }
 
 .ruboja-assistants-admin__card > h2 {
-	display: flex;
-	align-items: center;
-	gap: 10px;
 	margin: 20px 0 6px;
 	font-size: 18px;
 	font-weight: 700;
 	color: var(--ra-ink);
-}
-
-/* Red accent dot as in Ruboja's navigation. */
-.ruboja-assistants-admin__card > h2::before {
-	width: 8px;
-	height: 8px;
-	content: "";
-	background: var(--ra-red);
-	border-radius: 50%;
 }
 
 .ruboja-assistants-admin .form-table th {
