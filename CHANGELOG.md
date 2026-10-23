@@ -7,6 +7,8 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+## [0.1.4] - 2026-10-23
+
 ### Added
 - Setting "Ruboja header" (on by default): hides Ruboja's header line with logo, assistant name and organization by cutting off the top 60 pixels of the chat.
 
