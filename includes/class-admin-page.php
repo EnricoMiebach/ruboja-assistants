@@ -331,18 +331,18 @@ final class Admin_Page {
 				</table>
 				</section>
 
+				<section class="ruboja-assistants-admin__card">
+				<h2><?php esc_html_e( 'Embedding', 'ruboja-assistants' ); ?></h2>
+				<p><?php esc_html_e( 'In the block editor, add the block "Ruboja Assistant" and choose an assistant. Elsewhere, use the shortcode:', 'ruboja-assistants' ); ?></p>
+				<ul class="ruboja-assistants-admin__examples">
+					<li><code>[ruboja_assistant id="…"]</code> – <?php esc_html_e( 'inline in the content', 'ruboja-assistants' ); ?></li>
+					<li><code>[ruboja_assistant id="…" mode="floating" label="…"]</code> – <?php esc_html_e( 'as a floating chat button', 'ruboja-assistants' ); ?></li>
+					<li><code>height="800" title="…" color="#1f3a5f" position="left"</code> – <?php esc_html_e( 'optional attributes', 'ruboja-assistants' ); ?></li>
+				</ul>
+				</section>
+
 				<?php submit_button(); ?>
 			</form>
-
-			<section class="ruboja-assistants-admin__card">
-			<h2><?php esc_html_e( 'Embedding', 'ruboja-assistants' ); ?></h2>
-			<p><?php esc_html_e( 'In the block editor, add the block "Ruboja Assistant" and choose an assistant. Elsewhere, use the shortcode:', 'ruboja-assistants' ); ?></p>
-			<ul class="ruboja-assistants-admin__examples">
-				<li><code>[ruboja_assistant id="…"]</code> – <?php esc_html_e( 'inline in the content', 'ruboja-assistants' ); ?></li>
-				<li><code>[ruboja_assistant id="…" mode="floating" label="…"]</code> – <?php esc_html_e( 'as a floating chat button', 'ruboja-assistants' ); ?></li>
-				<li><code>height="800" title="…" color="#1f3a5f" position="left"</code> – <?php esc_html_e( 'optional attributes', 'ruboja-assistants' ); ?></li>
-			</ul>
-			</section>
 		</div>
 		<?php
 	}
