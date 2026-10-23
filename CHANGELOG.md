@@ -7,6 +7,8 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-10-23
+
 ### Fixed
 - The status "Starting the assistant …" stays visible until Ruboja has loaded, instead of an empty white window.
 
