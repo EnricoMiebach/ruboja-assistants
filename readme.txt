@@ -57,6 +57,10 @@ All assistants the creator of the API key may use in Ruboja. Only those you rele
 
 `id` (required), `mode` (inline or floating), `height` (pixels, inline only), `title`, `label` (button text, floating only), `color` (hex), `position` (right or left).
 
+= Is the API key part of the plugin files? =
+
+No. It is stored encrypted in the database (or defined in wp-config.php), never in the plugin folder, so downloading or copying the plugin does not copy the key. Deleting the plugin under Plugins removes the key and all settings, on multisite on every site. Deactivating keeps them. Removing the folder by FTP does not touch the database, so remove the key in the settings first or revoke it in Ruboja.
+
 = Do visitors need a Ruboja account? =
 
 No. Without user attribution the chat runs anonymously on the account of the key creator.

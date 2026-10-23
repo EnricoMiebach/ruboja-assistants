@@ -96,6 +96,23 @@ define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
 - Ohne Nutzer-Zuordnung laufen alle Chats anonym auf dem Konto des Schlüssel-Erstellers
   (Ruboja-Modus `operator`).
 
+## Wo der API-Schlüssel liegt
+
+- **Nie in den Plugin-Dateien.** Der Schlüssel steht verschlüsselt in der Datenbank
+  (`wp_options`, Option `ruboja_assistants_api_key`, Format `v1:…`) oder als Konstante in
+  der `wp-config.php`. Wer den Plugin-Ordner herunterlädt (FTP, Dateimanager des Hosters,
+  Download-Plugins) oder die Release-Zip weitergibt, gibt keinen Schlüssel weiter.
+- **Löschen über Plugins → Löschen** entfernt Schlüssel, Einstellungen und Assistentenliste
+  (`uninstall.php`, auch auf allen Seiten einer Multisite). **Deaktivieren** behält alles,
+  damit nach dem Reaktivieren nichts neu einzurichten ist.
+- **Ordner per FTP entfernen** löscht nichts in der Datenbank, denn WordPress führt
+  `uninstall.php` dann nicht aus. Den Schlüssel vorher in den Einstellungen mit
+  „Gespeicherten Schlüssel entfernen“ löschen oder in Ruboja widerrufen.
+- **Komplette Website-Sicherungen** (Datenbank und `wp-config.php`, auch Staging-Kopien)
+  enthalten den verschlüsselten Schlüssel und die Salts, mit denen er sich entschlüsseln
+  lässt. Gerät so eine Sicherung in falsche Hände: Schlüssel in Ruboja unter
+  Einstellungen → API-Schlüssel widerrufen und neu erzeugen.
+
 ## Entwicklung
 
 Voraussetzungen: Docker, Node.js 20+.

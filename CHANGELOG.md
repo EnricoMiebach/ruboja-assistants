@@ -7,6 +7,9 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+### Fixed
+- Deleting the plugin on a multisite network removes the API key and settings on every site, not only on the main site.
+
 ## [0.1.5] - 2026-10-23
 
 ### Added
