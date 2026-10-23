@@ -79,6 +79,7 @@
 				'inline' === mode &&
 					el( RangeControl, {
 						label: __( 'Height (px)', 'ruboja-assistants' ),
+						help: __( 'Ruboja does not adapt the height to its content. Choose it so that the start form fits without scrolling, about 1,050 px for a long form.', 'ruboja-assistants' ),
 						value: height,
 						min: 320,
 						max: 2000,

@@ -64,6 +64,19 @@ define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
 | `color`    | Hex-Farbe                | Akzentfarbe der Settings |
 | `position` | `right`, `left`          | `right`                  |
 
+### Höhe und Kopfzeile
+
+- Ruboja meldet seine Inhaltshöhe nicht an die einbettende Seite. Die Höhe eines
+  Inline-Assistenten wird deshalb fest eingestellt (Block: „Höhe“, Shortcode: `height`).
+  Für ein langes Startformular wie beim Vorauszahlungs-Assistenten passen etwa
+  **1.050 px** bei normaler Inhaltsbreite; auf dem Handy wird das Formular länger
+  (gemessen: ca. 1.225 px bei 420 px Breite) und scrollt dann im iFrame.
+- **Ruboja-Kopfzeile ausblenden** (Standard an): Logo, Assistentenname und Organisation
+  stehen in einer 60 px hohen Zeile, die sich in Ruboja nicht abschalten lässt. Das
+  Plugin schiebt den iFrame um diese Höhe nach oben und schneidet sie ab. Ändert
+  Ruboja sein Layout, die Option ausschalten oder per CSS anpassen:
+  `.ruboja-assistant { --ruboja-header-offset: 60px; }`
+
 ## Datenschutz
 
 - **Laden erst nach Klick** (Standard an): Bis zum Klick geht keine Verbindung zu Ruboja.

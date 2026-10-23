@@ -32,6 +32,7 @@ final class Settings {
 	public static function defaults(): array {
 		return array(
 			'color'            => self::DEFAULT_COLOR,
+			'hide_header'      => true,
 			'consent_required' => true,
 			'consent_text'     => '',
 			'show_history'     => false,
@@ -91,6 +92,7 @@ final class Settings {
 
 		return array(
 			'color'            => $color ? $color : $defaults['color'],
+			'hide_header'      => ! empty( $input['hide_header'] ),
 			'consent_required' => ! empty( $input['consent_required'] ),
 			'consent_text'     => isset( $input['consent_text'] ) ? sanitize_textarea_field( (string) $input['consent_text'] ) : '',
 			'show_history'     => ! empty( $input['show_history'] ),

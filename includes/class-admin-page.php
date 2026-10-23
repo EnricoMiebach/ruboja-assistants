@@ -271,6 +271,16 @@ final class Admin_Page {
 						</td>
 					</tr>
 					<tr>
+						<th scope="row"><?php esc_html_e( 'Ruboja header', 'ruboja-assistants' ); ?></th>
+						<td>
+							<label>
+								<input type="checkbox" name="ruboja_assistants[hide_header]" value="1" <?php checked( $settings['hide_header'] ); ?>>
+								<?php esc_html_e( 'Hide the header line of Ruboja (logo, assistant name and organization)', 'ruboja-assistants' ); ?>
+							</label>
+							<p class="description"><?php esc_html_e( 'Ruboja has no setting for this, so the plugin cuts off the top 60 pixels of the chat. If Ruboja changes its layout, switch this off.', 'ruboja-assistants' ); ?></p>
+						</td>
+					</tr>
+					<tr>
 						<th scope="row"><label for="ruboja-assistants-global"><?php esc_html_e( 'Floating assistant on every page', 'ruboja-assistants' ); ?></label></th>
 						<td>
 							<select id="ruboja-assistants-global" name="ruboja_assistants[global_assistant]">

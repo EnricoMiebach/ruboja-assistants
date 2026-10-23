@@ -5,6 +5,8 @@
 	--ruboja-on-color: #fff;
 	--ruboja-height: 720px;
 	--ruboja-radius: 12px;
+	/* Height of Ruboja's own header line (59.5px as of October 2026), cut off with "Hide Ruboja header". */
+	--ruboja-header-offset: 60px;
 	box-sizing: border-box;
 }
 
@@ -26,8 +28,9 @@
 	border-radius: var(--ruboja-radius);
 }
 
+/* Exactly the configured height: Ruboja does not report its content height, so set it to fit the start form. */
 .ruboja-assistant--inline .ruboja-assistant__stage {
-	height: min(var(--ruboja-height), 90vh);
+	height: var(--ruboja-height);
 }
 
 /* Shared */
@@ -36,6 +39,7 @@
 	position: relative;
 	display: flex;
 	min-height: 0;
+	overflow: hidden;
 }
 
 .ruboja-assistant__placeholder {
@@ -105,6 +109,12 @@
 
 .ruboja-assistant__frame.is-loaded {
 	opacity: 1;
+}
+
+/* Shift Ruboja's header out of the visible area; the stage clips it. */
+.ruboja-assistant--no-header .ruboja-assistant__frame {
+	top: calc(-1 * var(--ruboja-header-offset));
+	height: calc(100% + var(--ruboja-header-offset));
 }
 
 @media (prefers-reduced-motion: no-preference) {

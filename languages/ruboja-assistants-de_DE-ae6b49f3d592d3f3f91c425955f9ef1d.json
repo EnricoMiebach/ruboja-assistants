@@ -63,6 +63,9 @@
             ],
             "Ruboja Assistant": [
                 "Ruboja-Assistent"
+            ],
+            "Ruboja does not adapt the height to its content. Choose it so that the start form fits without scrolling, about 1,050 px for a long form.": [
+                "Ruboja passt die H\u00f6he nicht an den Inhalt an. W\u00e4hlen Sie sie so, dass das Startformular ohne Scrollen hineinpasst, bei einem langen Formular etwa 1.050 px."
             ]
         }
     }

@@ -67,6 +67,15 @@ class Test_Embed extends WP_UnitTestCase {
 		$this->assertStringContainsString( 'ruboja-assistant--floating', $html );
 	}
 
+	public function test_ruboja_header_is_hidden_unless_switched_off() {
+		$shortcode = '[ruboja_assistant id="' . self::ASSISTANT . '"]';
+
+		$this->assertStringContainsString( 'ruboja-assistant--no-header', do_shortcode( $shortcode ) );
+
+		Settings::save( array( 'hide_header' => '' ) );
+		$this->assertStringNotContainsString( 'ruboja-assistant--no-header', do_shortcode( $shortcode ) );
+	}
+
 	public function test_contrast_color() {
 		$this->assertSame( '#ffffff', Embed::contrast_color( '#1f3a5f' ) );
 		$this->assertSame( '#111111', Embed::contrast_color( '#ffd700' ) );

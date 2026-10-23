@@ -7,6 +7,12 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+### Added
+- Setting "Ruboja header" (on by default): hides Ruboja's header line with logo, assistant name and organization by cutting off the top 60 pixels of the chat.
+
+### Changed
+- Inline assistants now use exactly the configured height instead of at most 90 % of the screen height, so a long start form can be shown without scrolling. Ruboja does not report its content height, so the height must be set to fit (about 1,050 px for the long form of the Vorauszahlungs-Assistent).
+
 ## [0.1.3] - 2026-10-23
 
 ### Fixed

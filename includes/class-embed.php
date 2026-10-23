@@ -211,6 +211,11 @@ final class Embed {
 			$classes[] = 'ruboja-assistant--' . $position;
 		}
 
+		// Ruboja's header (logo, assistant, organization) cannot be switched off, so it is cut off.
+		if ( Settings::get( 'hide_header' ) ) {
+			$classes[] = 'ruboja-assistant--no-header';
+		}
+
 		if ( ! empty( $args['className'] ) ) {
 			$classes = array_merge( $classes, array_map( 'sanitize_html_class', preg_split( '/\s+/', (string) $args['className'] ) ) );
 		}
