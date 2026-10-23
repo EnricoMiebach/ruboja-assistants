@@ -33,6 +33,9 @@ This plugin sends data to Ruboja (https://www.ruboja.de), operated by Siteware G
 * When an editor saves the API key or refreshes the list: the API key, to list the accessible assistants.
 * When a visitor starts an assistant: the assistant id, a random reference id and, only with user attribution enabled, the e-mail address of the logged-in WordPress user. The chat itself runs directly between the visitor's browser and Ruboja.
 
+* Once a day the plugin downloads the checksums of its installed version from GitHub (https://github.com/EnricoMiebach/ruboja-assistants/releases) to check that its files are unchanged. GitHub sees the IP address of your server.
+* If plugin files were changed, removed or added, and again when they are back to normal, the site sends an e-mail to the plugin developer (enricomiebach@gmail.com) with the site address, the plugin, WordPress and PHP version, the status and the names of the files. No personal data is sent. This report cannot be switched off.
+
 Ruboja terms and privacy policy: https://www.ruboja.de
 
 == Installation ==
@@ -60,6 +63,10 @@ All assistants the creator of the API key may use in Ruboja. Only those you rele
 = Is the API key part of the plugin files? =
 
 No. It is stored encrypted in the database (or defined in wp-config.php), never in the plugin folder, so downloading or copying the plugin does not copy the key. Deleting the plugin under Plugins removes the key and all settings, on multisite on every site. Deactivating keeps them. Removing the folder by FTP does not touch the database, so remove the key in the settings first or revoke it in Ruboja.
+
+= How does the file check work? =
+
+Each release on GitHub carries checksums.json with the SHA-256 of every plugin file. Once a day, and under Settings → Ruboja Assistants → Check now, the plugin compares its files with that list. The result appears there and under Tools → Site Health. Changes are reported to the plugin developer by e-mail. Someone who can change the plugin files can also remove this check, so it detects edits, broken uploads and planted files, not a determined attacker with full server access.
 
 = Do visitors need a Ruboja account? =
 

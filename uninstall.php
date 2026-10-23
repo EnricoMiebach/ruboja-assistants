@@ -17,9 +17,12 @@ defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
  * @return void
  */
 function ruboja_assistants_uninstall_site() {
-	foreach ( array( 'ruboja_assistants_api_key', 'ruboja_assistants_settings', 'ruboja_assistants_assistants', 'ruboja_assistants_last_sync' ) as $option ) {
+	foreach ( array( 'ruboja_assistants_api_key', 'ruboja_assistants_settings', 'ruboja_assistants_assistants', 'ruboja_assistants_last_sync', 'ruboja_assistants_integrity' ) as $option ) {
 		delete_option( $option );
 	}
+
+	delete_transient( 'ruboja_assistants_manifest' );
+	wp_clear_scheduled_hook( 'ruboja_assistants_integrity_check' );
 }
 
 if ( is_multisite() ) {

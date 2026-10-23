@@ -192,113 +192,114 @@ msgstr "Unten links"
 msgid "Only released assistants are listed. Save after releasing an assistant to see it here."
 msgstr "Hier stehen nur freigegebene Assistenten. Nach dem Freigeben erst speichern, dann erscheint er hier."
 
-#: includes/class-admin-page.php:338
+#: includes/class-admin-page.php:337
 msgid "Embedding"
 msgstr "Einbindung"
 
-#: includes/class-admin-page.php:339
+#: includes/class-admin-page.php:338
 msgid "In the block editor, add the block \"Ruboja Assistant\" and choose an assistant. Elsewhere, use the shortcode:"
 msgstr "Im Block-Editor den Block „Ruboja-Assistent“ einfügen und einen Assistenten wählen. Überall sonst den Shortcode verwenden:"
 
-#: includes/class-admin-page.php:341
+#: includes/class-admin-page.php:340
 msgid "inline in the content"
 msgstr "inline im Inhalt"
 
-#: includes/class-admin-page.php:342
+#: includes/class-admin-page.php:341
 msgid "as a floating chat button"
 msgstr "als schwebender Chat-Button"
 
-#: includes/class-admin-page.php:343
+#: includes/class-admin-page.php:342
 msgid "optional attributes"
 msgstr "optionale Attribute"
 
 #. translators: %s: constant name.
-#: includes/class-admin-page.php:387
+#: includes/class-admin-page.php:434
 #, php-format
 msgid "is defined in wp-config.php (%s) and cannot be changed here."
 msgstr "ist in der wp-config.php festgelegt (%s) und lässt sich hier nicht ändern."
 
-#: includes/class-admin-page.php:400
+#: includes/class-admin-page.php:447
 msgid "The stored API key can no longer be read, probably because the security keys in wp-config.php changed. Please enter the key again."
 msgstr "Der gespeicherte API-Schlüssel lässt sich nicht mehr lesen, vermutlich weil sich die Sicherheitsschlüssel in der wp-config.php geändert haben. Bitte den Schlüssel neu eintragen."
 
-#: includes/class-admin-page.php:407
+#: includes/class-admin-page.php:454
 msgid "Stored key:"
 msgstr "Gespeicherter Schlüssel:"
 
-#: includes/class-admin-page.php:414
+#: includes/class-admin-page.php:461
 msgid "Enter a new key to replace it"
 msgstr "Neuen Schlüssel eingeben, um ihn zu ersetzen"
 
-#: includes/class-admin-page.php:420
+#: includes/class-admin-page.php:467
 msgid "Remove stored key"
 msgstr "Gespeicherten Schlüssel entfernen"
 
-#: includes/class-admin-page.php:426
+#: includes/class-admin-page.php:473
 msgid "Create the key in Ruboja under Settings → API keys and choose \"Optional\" for user attribution, otherwise anonymous visitors cannot use the assistants. The key acts with the permissions of the person who creates it, so it only lists assistants that person may use."
 msgstr "Den Schlüssel in Ruboja unter Einstellungen → API-Schlüssel erzeugen und bei der Nutzer-Zuordnung „Optional“ wählen, sonst können anonyme Besucher die Assistenten nicht nutzen. Der Schlüssel hat die Rechte der Person, die ihn erzeugt. Er listet also nur Assistenten, die diese Person nutzen darf."
 
 #. translators: %s: constant name.
-#: includes/class-admin-page.php:431
+#: includes/class-admin-page.php:478
 #, php-format
 msgid "The key is stored encrypted. Alternatively define it in wp-config.php as %s."
 msgstr "Der Schlüssel wird verschlüsselt gespeichert. Alternativ in der wp-config.php als %s festlegen."
 
-#: includes/class-admin-page.php:446
+#: includes/class-admin-page.php:493
 msgid "No assistants loaded yet. Save an API key, then click \"Test connection and refresh list\"."
 msgstr "Noch keine Assistenten geladen. API-Schlüssel speichern und dann auf „Verbindung testen und Liste aktualisieren“ klicken."
 
-#: includes/class-admin-page.php:461
+#: includes/class-admin-page.php:508
 msgid "Released"
 msgstr "Freigegeben"
 
-#: includes/class-admin-page.php:462
+#: includes/class-admin-page.php:509
 #: blocks/assistant/index.js:54
 #: blocks/assistant/index.js:68
 msgid "Assistant"
 msgstr "Assistent"
 
-#: includes/class-admin-page.php:463
+#: includes/class-admin-page.php:510
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/class-admin-page.php:464
+#: includes/class-admin-page.php:511
 msgid "Logged-in users only"
 msgstr "Nur angemeldete Nutzer"
 
-#: includes/class-admin-page.php:465
+#: includes/class-admin-page.php:512
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: includes/class-admin-page.php:478
+#: includes/class-admin-page.php:525
 msgid "No longer accessible with this API key. It is not shown on the website."
 msgstr "Mit diesem API-Schlüssel nicht mehr zugänglich. Er wird auf der Website nicht angezeigt."
 
 #. translators: %s: assistant title.
-#: includes/class-admin-page.php:485
+#: includes/class-admin-page.php:532
 #, php-format
 msgid "Only for logged-in users: %s"
 msgstr "Nur für angemeldete Nutzer: %s"
 
-#: includes/class-admin-page.php:489
+#: includes/class-admin-page.php:536
 msgid "Copy"
 msgstr "Kopieren"
 
 #. translators: %s: error message from Ruboja.
-#: includes/class-admin-page.php:511
+#: includes/class-admin-page.php:558
 #, php-format
 msgid "Connection to Ruboja failed: %s"
 msgstr "Verbindung zu Ruboja fehlgeschlagen: %s"
 
 #. translators: %d: number of assistants.
-#: includes/class-admin-page.php:524
+#: includes/class-admin-page.php:571
 #, php-format
 msgid "Connected. %d assistant is accessible with this API key."
 msgid_plural "Connected. %d assistants are accessible with this API key."
 msgstr[0] "Verbunden. Mit diesem API-Schlüssel ist %d Assistent zugänglich."
 msgstr[1] "Verbunden. Mit diesem API-Schlüssel sind %d Assistenten zugänglich."
 
-#: includes/class-admin-page.php:538
+#: includes/class-admin-page.php:585
+#: includes/class-integrity.php:251
 msgid "You are not allowed to change these settings."
 msgstr "Sie dürfen diese Einstellungen nicht ändern."
 
@@ -452,18 +453,18 @@ msgctxt "block keyword"
 msgid "ki"
 msgstr "ki"
 
-#: includes/class-admin-page.php:369
+#: includes/class-admin-page.php:416
 #: includes/class-updater.php:110
 msgid "Release notes on GitHub"
 msgstr "Versionshinweise auf GitHub"
 
 #. translators: %s: plugin version.
-#: includes/class-admin-page.php:364
+#: includes/class-admin-page.php:411
 #, php-format
 msgid "Version %s"
 msgstr "Version %s"
 
-#: includes/class-admin-page.php:427
+#: includes/class-admin-page.php:474
 msgid "Ruboja greets anonymous visitors with the first name of the person who created the key. Create the key with a technical Ruboja user, for example \"Website\", that has access to the assistants you want to embed."
 msgstr "Ruboja begrüßt anonyme Besucher mit dem Vornamen der Person, die den Schlüssel erzeugt hat. Erzeugen Sie den Schlüssel daher mit einem technischen Ruboja-Nutzer, etwa „Website“, der Zugriff auf die einzubindenden Assistenten hat."
 
@@ -494,3 +495,93 @@ msgstr "Nur ab 640 Pixel Breite; in schmaleren Fenstern wie dem schwebenden kann
 #: includes/class-admin-page.php:288
 msgid "Used for buttons and the header of the floating window. Can be overridden per block or shortcode."
 msgstr "Für Buttons und die Kopfzeile des schwebenden Fensters. Lässt sich je Block oder Shortcode überschreiben."
+
+#: includes/class-admin-page.php:361
+msgid "All plugin files match the published version."
+msgstr "Alle Plugin-Dateien stimmen mit der veröffentlichten Version überein."
+
+#: includes/class-admin-page.php:362
+msgid "Some plugin files differ from the published version."
+msgstr "Einige Plugin-Dateien weichen von der veröffentlichten Version ab."
+
+#: includes/class-admin-page.php:363
+msgid "The checksums could not be loaded from GitHub."
+msgstr "Die Prüfsummen konnten nicht von GitHub geladen werden."
+
+#: includes/class-admin-page.php:364
+msgid "Development copy (Git), not checked."
+msgstr "Entwicklungskopie (Git), nicht geprüft."
+
+#: includes/class-admin-page.php:365
+msgid "Not checked yet."
+msgstr "Noch nicht geprüft."
+
+#: includes/class-admin-page.php:375
+msgid "File check"
+msgstr "Dateiprüfung"
+
+#: includes/class-admin-page.php:376
+msgid "Every day the plugin compares its files with the checksums published for this version on GitHub. If files were changed, removed or added, the plugin developer (Siteware) is informed automatically by e-mail with the site address, the plugin, WordPress and PHP version and the file names. No personal data is sent."
+msgstr "Das Plugin vergleicht täglich seine Dateien mit den Prüfsummen, die für diese Version auf GitHub veröffentlicht sind. Wurden Dateien geändert, entfernt oder hinzugefügt, wird der Plugin-Entwickler (Siteware) automatisch per E-Mail informiert, mit Website-Adresse, Plugin-, WordPress- und PHP-Version und den Dateinamen. Personenbezogene Daten werden nicht übertragen."
+
+#. translators: %s: date and time.
+#: includes/class-admin-page.php:385
+#, php-format
+msgid "(checked %s)"
+msgstr "(geprüft am %s)"
+
+#: includes/class-admin-page.php:392
+msgid "Check now"
+msgstr "Jetzt prüfen"
+
+#: includes/class-integrity.php:270
+msgid "Ruboja Assistants file integrity"
+msgstr "Dateien von Ruboja-Assistenten"
+
+#: includes/class-integrity.php:286
+msgid "Security"
+msgstr "Sicherheit"
+
+#: includes/class-integrity.php:295
+msgid "The files of Ruboja Assistants are unchanged"
+msgstr "Die Dateien von Ruboja-Assistenten sind unverändert"
+
+#: includes/class-integrity.php:297
+msgid "All plugin files match the checksums published with this version on GitHub."
+msgstr "Alle Plugin-Dateien stimmen mit den Prüfsummen überein, die mit dieser Version auf GitHub veröffentlicht wurden."
+
+#: includes/class-integrity.php:302
+msgid "The files of Ruboja Assistants were changed"
+msgstr "Die Dateien von Ruboja-Assistenten wurden verändert"
+
+#: includes/class-integrity.php:304
+msgid "Some plugin files differ from the published version. The plugin developer has been informed. Reinstall the plugin from the release zip."
+msgstr "Einige Plugin-Dateien weichen von der veröffentlichten Version ab. Der Plugin-Entwickler wurde informiert. Installieren Sie das Plugin aus der Release-Zip neu."
+
+#: includes/class-integrity.php:309
+msgid "Ruboja Assistants runs from a development copy"
+msgstr "Ruboja-Assistenten läuft aus einer Entwicklungskopie"
+
+#: includes/class-integrity.php:311
+msgid "The plugin folder is a Git working copy, so its files are not compared with a release."
+msgstr "Der Plugin-Ordner ist eine Git-Arbeitskopie, deshalb werden seine Dateien nicht mit einem Release verglichen."
+
+#: includes/class-integrity.php:316
+msgid "The files of Ruboja Assistants could not be checked"
+msgstr "Die Dateien von Ruboja-Assistenten konnten nicht geprüft werden"
+
+#: includes/class-integrity.php:318
+msgid "The checksums for the installed version could not be loaded from GitHub. The check runs again automatically."
+msgstr "Die Prüfsummen der installierten Version konnten nicht von GitHub geladen werden. Die Prüfung läuft automatisch erneut."
+
+#: includes/class-integrity.php:331
+msgid "Changed"
+msgstr "Geändert"
+
+#: includes/class-integrity.php:332
+msgid "Missing"
+msgstr "Fehlt"
+
+#: includes/class-integrity.php:333
+msgid "Added"
+msgstr "Hinzugefügt"

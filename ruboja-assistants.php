@@ -31,6 +31,9 @@ require_once __DIR__ . '/includes/class-rest-controller.php';
 require_once __DIR__ . '/includes/class-embed.php';
 require_once __DIR__ . '/includes/class-admin-page.php';
 require_once __DIR__ . '/includes/class-updater.php';
+require_once __DIR__ . '/includes/class-integrity.php';
 require_once __DIR__ . '/includes/class-plugin.php';
+
+register_deactivation_hook( __FILE__, array( Integrity::class, 'unschedule' ) );
 
 Plugin::instance();

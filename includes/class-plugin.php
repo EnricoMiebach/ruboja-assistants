@@ -46,6 +46,7 @@ final class Plugin {
 		( new Embed() )->register();
 		( new Rest_Controller() )->register();
 		( new Updater() )->register();
+		( new Integrity() )->register();
 
 		if ( is_admin() ) {
 			( new Admin_Page() )->register();

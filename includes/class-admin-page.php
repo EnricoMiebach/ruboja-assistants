@@ -331,6 +331,8 @@ final class Admin_Page {
 				</table>
 				</section>
 
+				<?php $this->render_integrity_card(); ?>
+
 				<section class="ruboja-assistants-admin__card">
 				<h2><?php esc_html_e( 'Embedding', 'ruboja-assistants' ); ?></h2>
 				<p><?php esc_html_e( 'In the block editor, add the block "Ruboja Assistant" and choose an assistant. Elsewhere, use the shortcode:', 'ruboja-assistants' ); ?></p>
@@ -344,6 +346,51 @@ final class Admin_Page {
 				<?php submit_button(); ?>
 			</form>
 		</div>
+		<?php
+	}
+
+	/**
+	 * Card with the result of the file integrity check.
+	 *
+	 * @return void
+	 */
+	private function render_integrity_card(): void {
+		$result = Integrity::result();
+		$url    = wp_nonce_url( admin_url( 'admin-post.php?action=' . Integrity::ACTION_CHECK ), Integrity::ACTION_CHECK );
+		$texts  = array(
+			Integrity::STATUS_OK          => __( 'All plugin files match the published version.', 'ruboja-assistants' ),
+			Integrity::STATUS_MODIFIED    => __( 'Some plugin files differ from the published version.', 'ruboja-assistants' ),
+			Integrity::STATUS_UNAVAILABLE => __( 'The checksums could not be loaded from GitHub.', 'ruboja-assistants' ),
+			Integrity::STATUS_DEVELOPMENT => __( 'Development copy (Git), not checked.', 'ruboja-assistants' ),
+			''                            => __( 'Not checked yet.', 'ruboja-assistants' ),
+		);
+		$status = (string) $result['status'];
+		$class  = array(
+			Integrity::STATUS_OK       => ' is-connected',
+			Integrity::STATUS_MODIFIED => ' is-error',
+		);
+
+		?>
+		<section class="ruboja-assistants-admin__card" id="ruboja-assistants-integrity">
+			<h2><?php esc_html_e( 'File check', 'ruboja-assistants' ); ?></h2>
+			<p><?php esc_html_e( 'Every day the plugin compares its files with the checksums published for this version on GitHub. If files were changed, removed or added, the plugin developer (Siteware) is informed automatically by e-mail with the site address, the plugin, WordPress and PHP version and the file names. No personal data is sent.', 'ruboja-assistants' ); ?></p>
+			<p class="<?php echo esc_attr( 'ruboja-assistants-admin__status' . ( $class[ $status ] ?? '' ) ); ?>">
+				<?php
+				echo esc_html( $texts[ $status ] ?? $texts[''] );
+
+				if ( ! empty( $result['checked_at'] ) ) {
+					echo ' ';
+					printf(
+						/* translators: %s: date and time. */
+						esc_html__( '(checked %s)', 'ruboja-assistants' ),
+						esc_html( wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), (int) $result['checked_at'] ) )
+					);
+				}
+				?>
+			</p>
+			<?php echo wp_kses_post( Integrity::findings_html( $result ) ); ?>
+			<p><a class="button" href="<?php echo esc_url( $url ); ?>"><?php esc_html_e( 'Check now', 'ruboja-assistants' ); ?></a></p>
+		</section>
 		<?php
 	}
 

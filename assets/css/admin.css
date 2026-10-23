@@ -267,6 +267,20 @@
 	background: #16a34a;
 }
 
+.ruboja-assistants-admin__status.is-error {
+	color: var(--ra-red-hover);
+	background: var(--ra-red-50);
+}
+
+.ruboja-assistants-admin__status.is-error::before {
+	background: var(--ra-red);
+}
+
+.ruboja-assistants-admin__files {
+	margin: 0 0 12px 1.25em;
+	list-style: disc;
+}
+
 /* Assistant table */
 
 .ruboja-assistants-admin__table {

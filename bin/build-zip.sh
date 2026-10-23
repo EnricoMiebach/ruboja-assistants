@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Builds dist/ruboja-assistants.zip with only the files the plugin needs at runtime.
+# Builds dist/ruboja-assistants.zip with only the files the plugin needs at runtime,
+# plus dist/checksums.json with the SHA-256 of every file in it (for the integrity check).
 # The zip contains a top-level folder "ruboja-assistants/", as WordPress expects.
 set -euo pipefail
 
@@ -15,6 +16,7 @@ mkdir -p "$BUILD_DIR/$SLUG"
 rsync -a --exclude-from=.distignore ./ "$BUILD_DIR/$SLUG/"
 
 ( cd "$BUILD_DIR" && zip -qr "../$SLUG.zip" "$SLUG" )
+python3 bin/make-checksums.py "$BUILD_DIR/$SLUG" "$VERSION" dist/checksums.json
 rm -rf "$BUILD_DIR"
 
-echo "Built dist/$SLUG.zip (version $VERSION)"
+echo "Built dist/$SLUG.zip and dist/checksums.json (version $VERSION)"

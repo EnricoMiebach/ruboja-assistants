@@ -127,6 +127,27 @@ define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
   lässt. Gerät so eine Sicherung in falsche Hände: Schlüssel in Ruboja unter
   Einstellungen → API-Schlüssel widerrufen und neu erzeugen.
 
+## Dateiprüfung und Meldung an den Entwickler
+
+- Jedes Release trägt `checksums.json` mit den SHA-256-Prüfsummen aller Plugin-Dateien
+  (`bin/build-zip.sh` → `bin/make-checksums.py`, Release-Workflow hängt sie an).
+- Jede Installation lädt täglich die Liste **ihrer** Version von GitHub und vergleicht
+  (`includes/class-integrity.php`). Ergebnis: unverändert, verändert (geänderte, fehlende,
+  hinzugefügte Dateien), nicht prüfbar (keine Liste erreichbar), Entwicklungskopie (`.git`).
+- **Meldung an den Entwickler:** Bei neuen Abweichungen und wenn wieder alles stimmt, schickt
+  die Website eine E-Mail an `Integrity::DEVELOPER_EMAIL` (enricomiebach@gmail.com): Website,
+  Plugin-, WordPress- und PHP-Version, Status, Dateinamen und denselben Bericht als JSON.
+  Keine personenbezogenen Daten. Immer an, offengelegt in `readme.txt` und auf der
+  Einstellungsseite. Der Absender ist der Standard von WordPress (`wordpress@<domain>`);
+  ohne funktionierenden Mailversand der Website geht die Meldung verloren.
+- **Ruboja-Datenquelle (vorbereitet):** `Integrity::REPORT_WEBHOOK` auf die Webhook-Adresse
+  einer Datenquelle in Siteware GmbH setzen, dann geht derselbe JSON-Bericht zusätzlich
+  dorthin (z. B. für ein Dashboard aller Installationen).
+- Sichtbar für Betreiber unter Werkzeuge → Website-Zustand und in der Karte „Dateiprüfung“.
+- **Grenze:** Wer die Plugin-Dateien ändern kann, kann auch die Prüfung entfernen. Sie
+  erkennt Änderungen, fehlerhafte Uploads und abgelegte Dateien, keinen gezielten Angreifer
+  mit vollem Serverzugriff.
+
 ## Entwicklung
 
 Voraussetzungen: Docker, Node.js 20+.

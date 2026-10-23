@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ruboja Assistants 0.1.7\n"
+"Project-Id-Version: Ruboja Assistants 0.1.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ruboja-assistants\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-23T10:05:38+00:00\n"
+"POT-Creation-Date: 2026-10-23T10:33:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ruboja-assistants\n"
@@ -216,128 +216,167 @@ msgstr ""
 msgid "Only released assistants are listed. Save after releasing an assistant to see it here."
 msgstr ""
 
-#: includes/class-admin-page.php:338
+#: includes/class-admin-page.php:337
 msgid "Embedding"
 msgstr ""
 
-#: includes/class-admin-page.php:339
+#: includes/class-admin-page.php:338
 msgid "In the block editor, add the block \"Ruboja Assistant\" and choose an assistant. Elsewhere, use the shortcode:"
 msgstr ""
 
-#: includes/class-admin-page.php:341
+#: includes/class-admin-page.php:340
 msgid "inline in the content"
 msgstr ""
 
-#: includes/class-admin-page.php:342
+#: includes/class-admin-page.php:341
 msgid "as a floating chat button"
 msgstr ""
 
-#: includes/class-admin-page.php:343
+#: includes/class-admin-page.php:342
 msgid "optional attributes"
 msgstr ""
 
-#. translators: %s: plugin version.
+#: includes/class-admin-page.php:361
+msgid "All plugin files match the published version."
+msgstr ""
+
+#: includes/class-admin-page.php:362
+msgid "Some plugin files differ from the published version."
+msgstr ""
+
+#: includes/class-admin-page.php:363
+msgid "The checksums could not be loaded from GitHub."
+msgstr ""
+
 #: includes/class-admin-page.php:364
+msgid "Development copy (Git), not checked."
+msgstr ""
+
+#: includes/class-admin-page.php:365
+msgid "Not checked yet."
+msgstr ""
+
+#: includes/class-admin-page.php:375
+msgid "File check"
+msgstr ""
+
+#: includes/class-admin-page.php:376
+msgid "Every day the plugin compares its files with the checksums published for this version on GitHub. If files were changed, removed or added, the plugin developer (Siteware) is informed automatically by e-mail with the site address, the plugin, WordPress and PHP version and the file names. No personal data is sent."
+msgstr ""
+
+#. translators: %s: date and time.
+#: includes/class-admin-page.php:385
+#, php-format
+msgid "(checked %s)"
+msgstr ""
+
+#: includes/class-admin-page.php:392
+msgid "Check now"
+msgstr ""
+
+#. translators: %s: plugin version.
+#: includes/class-admin-page.php:411
 #, php-format
 msgid "Version %s"
 msgstr ""
 
-#: includes/class-admin-page.php:369
+#: includes/class-admin-page.php:416
 #: includes/class-updater.php:110
 msgid "Release notes on GitHub"
 msgstr ""
 
 #. translators: %s: constant name.
-#: includes/class-admin-page.php:387
+#: includes/class-admin-page.php:434
 #, php-format
 msgid "is defined in wp-config.php (%s) and cannot be changed here."
 msgstr ""
 
-#: includes/class-admin-page.php:400
+#: includes/class-admin-page.php:447
 msgid "The stored API key can no longer be read, probably because the security keys in wp-config.php changed. Please enter the key again."
 msgstr ""
 
-#: includes/class-admin-page.php:407
+#: includes/class-admin-page.php:454
 msgid "Stored key:"
 msgstr ""
 
-#: includes/class-admin-page.php:414
+#: includes/class-admin-page.php:461
 msgid "Enter a new key to replace it"
 msgstr ""
 
-#: includes/class-admin-page.php:420
+#: includes/class-admin-page.php:467
 msgid "Remove stored key"
 msgstr ""
 
-#: includes/class-admin-page.php:426
+#: includes/class-admin-page.php:473
 msgid "Create the key in Ruboja under Settings → API keys and choose \"Optional\" for user attribution, otherwise anonymous visitors cannot use the assistants. The key acts with the permissions of the person who creates it, so it only lists assistants that person may use."
 msgstr ""
 
-#: includes/class-admin-page.php:427
+#: includes/class-admin-page.php:474
 msgid "Ruboja greets anonymous visitors with the first name of the person who created the key. Create the key with a technical Ruboja user, for example \"Website\", that has access to the assistants you want to embed."
 msgstr ""
 
 #. translators: %s: constant name.
-#: includes/class-admin-page.php:431
+#: includes/class-admin-page.php:478
 #, php-format
 msgid "The key is stored encrypted. Alternatively define it in wp-config.php as %s."
 msgstr ""
 
-#: includes/class-admin-page.php:446
+#: includes/class-admin-page.php:493
 msgid "No assistants loaded yet. Save an API key, then click \"Test connection and refresh list\"."
 msgstr ""
 
-#: includes/class-admin-page.php:461
+#: includes/class-admin-page.php:508
 msgid "Released"
 msgstr ""
 
-#: includes/class-admin-page.php:462
+#: includes/class-admin-page.php:509
 #: blocks/assistant/index.js:54
 #: blocks/assistant/index.js:68
 msgid "Assistant"
 msgstr ""
 
-#: includes/class-admin-page.php:463
+#: includes/class-admin-page.php:510
 msgid "Category"
 msgstr ""
 
-#: includes/class-admin-page.php:464
+#: includes/class-admin-page.php:511
 msgid "Logged-in users only"
 msgstr ""
 
-#: includes/class-admin-page.php:465
+#: includes/class-admin-page.php:512
 msgid "Shortcode"
 msgstr ""
 
-#: includes/class-admin-page.php:478
+#: includes/class-admin-page.php:525
 msgid "No longer accessible with this API key. It is not shown on the website."
 msgstr ""
 
 #. translators: %s: assistant title.
-#: includes/class-admin-page.php:485
+#: includes/class-admin-page.php:532
 #, php-format
 msgid "Only for logged-in users: %s"
 msgstr ""
 
-#: includes/class-admin-page.php:489
+#: includes/class-admin-page.php:536
 msgid "Copy"
 msgstr ""
 
 #. translators: %s: error message from Ruboja.
-#: includes/class-admin-page.php:511
+#: includes/class-admin-page.php:558
 #, php-format
 msgid "Connection to Ruboja failed: %s"
 msgstr ""
 
 #. translators: %d: number of assistants.
-#: includes/class-admin-page.php:524
+#: includes/class-admin-page.php:571
 #, php-format
 msgid "Connected. %d assistant is accessible with this API key."
 msgid_plural "Connected. %d assistants are accessible with this API key."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-admin-page.php:538
+#: includes/class-admin-page.php:585
+#: includes/class-integrity.php:251
 msgid "You are not allowed to change these settings."
 msgstr ""
 
@@ -384,6 +423,58 @@ msgstr ""
 
 #: includes/class-embed.php:323
 msgid "Try again"
+msgstr ""
+
+#: includes/class-integrity.php:270
+msgid "Ruboja Assistants file integrity"
+msgstr ""
+
+#: includes/class-integrity.php:286
+msgid "Security"
+msgstr ""
+
+#: includes/class-integrity.php:295
+msgid "The files of Ruboja Assistants are unchanged"
+msgstr ""
+
+#: includes/class-integrity.php:297
+msgid "All plugin files match the checksums published with this version on GitHub."
+msgstr ""
+
+#: includes/class-integrity.php:302
+msgid "The files of Ruboja Assistants were changed"
+msgstr ""
+
+#: includes/class-integrity.php:304
+msgid "Some plugin files differ from the published version. The plugin developer has been informed. Reinstall the plugin from the release zip."
+msgstr ""
+
+#: includes/class-integrity.php:309
+msgid "Ruboja Assistants runs from a development copy"
+msgstr ""
+
+#: includes/class-integrity.php:311
+msgid "The plugin folder is a Git working copy, so its files are not compared with a release."
+msgstr ""
+
+#: includes/class-integrity.php:316
+msgid "The files of Ruboja Assistants could not be checked"
+msgstr ""
+
+#: includes/class-integrity.php:318
+msgid "The checksums for the installed version could not be loaded from GitHub. The check runs again automatically."
+msgstr ""
+
+#: includes/class-integrity.php:331
+msgid "Changed"
+msgstr ""
+
+#: includes/class-integrity.php:332
+msgid "Missing"
+msgstr ""
+
+#: includes/class-integrity.php:333
+msgid "Added"
 msgstr ""
 
 #: includes/class-rest-controller.php:85
