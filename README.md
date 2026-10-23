@@ -1,5 +1,8 @@
 # Ruboja Assistants (WordPress-Plugin)
 
+[![Neueste Version](https://img.shields.io/github/v/release/EnricoMiebach/ruboja-assistants?label=Version)](https://github.com/EnricoMiebach/ruboja-assistants/releases/latest)
+[![Downloads der neuesten Version](https://img.shields.io/github/downloads/EnricoMiebach/ruboja-assistants/latest/ruboja-assistants.zip?label=Downloads%20neueste%20Version)](https://github.com/EnricoMiebach/ruboja-assistants/releases/latest)
+
 Bindet Ruboja-Assistenten auf einer WordPress-Seite ein, inline im Inhalt oder als
 schwebendes Chatfenster. Der Assistent läuft genau so, wie er in Ruboja eingerichtet
 ist: System-Prompt, Wissen, Werkzeuge, festes Modell und Startformular.
@@ -160,7 +163,8 @@ npm run lint:php         # WordPress Coding Standards
 npm run test:php         # PHPUnit gegen die WordPress-Testsuite
 npm run i18n:pot         # languages/ruboja-assistants.pot neu erzeugen
 npm run i18n:compile     # .po → .mo und .json
-npm run build:zip        # dist/ruboja-assistants.zip
+npm run build:zip        # dist/ruboja-assistants.zip und dist/checksums.json
+npm run downloads        # Downloads je Release und gesamt
 ```
 
 Aufbau:
@@ -207,6 +211,21 @@ das GitHub-Release.
   Installation aus der Release-Zip testen.
 - Bei einem privaten Repository bräuchte jede Seite ein Token mit Lesezugriff:
   `define( 'RUBOJA_ASSISTANTS_GITHUB_TOKEN', 'github_pat_…' );` (nicht getestet).
+
+## Downloads zählen
+
+GitHub zählt jeden Download einer Release-Datei. `npm run downloads` (oder
+`bin/downloads.py`) zeigt die Zahlen je Release und gesamt:
+
+- **Zip:** Downloads von `ruboja-assistants.zip`, also manuelle Downloads, Neuinstallationen
+  und jedes Update, das WordPress von GitHub holt. Eine Website zählt pro Update einmal.
+- **Prüfungen:** Abrufe von `checksums.json` durch die tägliche Dateiprüfung (ab 0.1.9),
+  höchstens etwa zwei pro Website und Tag. Daraus lässt sich die Zahl aktiver Installationen
+  grob ablesen.
+
+Das Badge oben zeigt die Zip-Downloads der neuesten Version. Ein Badge für die Zip über
+alle Versionen bietet shields.io nicht an; das „total“-Badge würde die Prüfsummen-Abrufe
+mitzählen.
 
 ## Lizenz
 

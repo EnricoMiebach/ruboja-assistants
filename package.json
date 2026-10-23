@@ -14,7 +14,8 @@
 		"test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/ruboja-assistants vendor/bin/phpunit",
 		"i18n:pot": "wp-env run cli --env-cwd=wp-content/plugins/ruboja-assistants wp i18n make-pot . languages/ruboja-assistants.pot --exclude=vendor,node_modules,tests,dist",
 		"i18n:compile": "wp-env run cli --env-cwd=wp-content/plugins/ruboja-assistants bash bin/compile-translations.sh",
-		"build:zip": "bash bin/build-zip.sh"
+		"build:zip": "bash bin/build-zip.sh",
+		"downloads": "python3 bin/downloads.py"
 	},
 	"devDependencies": {
 		"@wordpress/env": "^10.0.0"
