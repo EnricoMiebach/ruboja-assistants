@@ -7,6 +7,12 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+### Added
+- Experimental setting, off by default: also cut off Ruboja's greeting ("Schön, dass du da bist, Enrico!"). Applies only from a width of 640 px, because narrower windows wrap the greeting unpredictably; inline height should then be about 100 px lower.
+
+### Changed
+- Inline assistants no longer draw their own border and background, so they blend into the page.
+
 ## [0.1.4] - 2026-10-23
 
 ### Added

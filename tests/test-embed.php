@@ -76,6 +76,23 @@ class Test_Embed extends WP_UnitTestCase {
 		$this->assertStringNotContainsString( 'ruboja-assistant--no-header', do_shortcode( $shortcode ) );
 	}
 
+	public function test_cutting_the_greeting_is_off_by_default_and_implies_the_header() {
+		$shortcode = '[ruboja_assistant id="' . self::ASSISTANT . '"]';
+
+		$this->assertStringNotContainsString( 'ruboja-assistant--no-greeting', do_shortcode( $shortcode ) );
+
+		Settings::save(
+			array(
+				'hide_header'   => '',
+				'hide_greeting' => '1',
+			)
+		);
+		$html = do_shortcode( $shortcode );
+
+		$this->assertStringContainsString( 'ruboja-assistant--no-greeting', $html );
+		$this->assertStringContainsString( 'ruboja-assistant--no-header', $html, 'The greeting sits below the header.' );
+	}
+
 	public function test_contrast_color() {
 		$this->assertSame( '#ffffff', Embed::contrast_color( '#1f3a5f' ) );
 		$this->assertSame( '#111111', Embed::contrast_color( '#ffd700' ) );

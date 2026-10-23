@@ -7,6 +7,11 @@
 	--ruboja-radius: 12px;
 	/* Height of Ruboja's own header line (59.5px as of October 2026), cut off with "Hide Ruboja header". */
 	--ruboja-header-offset: 60px;
+	/*
+	 * Experimental "cut off greeting": 36px padding + 40.5px single-line greeting + 21.5px of the
+	 * 36px gap below it, so about 14px of space stay above the start form.
+	 */
+	--ruboja-greeting-offset: 98px;
 	box-sizing: border-box;
 }
 
@@ -18,14 +23,11 @@
 
 /* Inline */
 
+/* No frame of its own, so the assistant blends into the page; themes can add one via a CSS class. */
 .ruboja-assistant--inline {
 	width: 100%;
 	margin-block: 1.5em;
 	overflow: hidden;
-	background: #fff;
-	color: #1e1e1e;
-	border: 1px solid rgba(0, 0, 0, 0.12);
-	border-radius: var(--ruboja-radius);
 }
 
 /* Exactly the configured height: Ruboja does not report its content height, so set it to fit the start form. */
@@ -115,6 +117,23 @@
 .ruboja-assistant--no-header .ruboja-assistant__frame {
 	top: calc(-1 * var(--ruboja-header-offset));
 	height: calc(100% + var(--ruboja-header-offset));
+}
+
+/*
+ * Experimental: cut off the greeting as well. Ruboja's longest greeting
+ * ("Womit kann ich dir helfen, Enrico?") stays on one line from about 600px,
+ * so narrower stages (floating window, phones) keep the greeting rather than
+ * showing half of a wrapped one.
+ */
+.ruboja-assistant--no-greeting .ruboja-assistant__stage {
+	container: ruboja-stage / inline-size;
+}
+
+@container ruboja-stage (min-width: 640px) {
+	.ruboja-assistant--no-greeting .ruboja-assistant__frame {
+		top: calc(-1 * (var(--ruboja-header-offset) + var(--ruboja-greeting-offset)));
+		height: calc(100% + var(--ruboja-header-offset) + var(--ruboja-greeting-offset));
+	}
 }
 
 @media (prefers-reduced-motion: no-preference) {

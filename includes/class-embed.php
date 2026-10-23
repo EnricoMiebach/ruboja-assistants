@@ -211,9 +211,14 @@ final class Embed {
 			$classes[] = 'ruboja-assistant--' . $position;
 		}
 
-		// Ruboja's header (logo, assistant, organization) cannot be switched off, so it is cut off.
-		if ( Settings::get( 'hide_header' ) ) {
+		// Ruboja's header (logo, assistant, organization) and greeting cannot be switched off, so they are cut off.
+		// The greeting sits below the header, so cutting it always cuts the header too.
+		if ( Settings::get( 'hide_header' ) || Settings::get( 'hide_greeting' ) ) {
 			$classes[] = 'ruboja-assistant--no-header';
+		}
+
+		if ( Settings::get( 'hide_greeting' ) ) {
+			$classes[] = 'ruboja-assistant--no-greeting';
 		}
 
 		if ( ! empty( $args['className'] ) ) {

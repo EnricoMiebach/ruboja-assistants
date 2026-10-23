@@ -76,6 +76,14 @@ define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
   Plugin schiebt den iFrame um diese Höhe nach oben und schneidet sie ab. Ändert
   Ruboja sein Layout, die Option ausschalten oder per CSS anpassen:
   `.ruboja-assistant { --ruboja-header-offset: 60px; }`
+- **Begrüßung abschneiden** (experimentell, Standard aus): Ruboja begrüßt mit einem
+  zufälligen Satz samt Vorname („Schön, dass du da bist, Enrico!“), ohne Einstellung zum
+  Abschalten. Die Option schneidet zusätzlich 98 px ab, aber nur ab 640 px Breite: Schmaler
+  bricht die Begrüßung je nach Satz um, sie bleibt dann sichtbar statt halb abgeschnitten.
+  Inline-Höhe dabei etwa 100 px niedriger wählen (Vorauszahlungs-Assistent: ca. 950 px) und
+  lieber etwas zu knapp, sonst zentriert Ruboja den Inhalt und die Begrüßung rutscht ins Bild.
+  Nach dem Start des Gesprächs bleiben die obersten ca. 100 px des Chats verdeckt.
+  Feinjustierung per CSS: `.ruboja-assistant { --ruboja-greeting-offset: 98px; }`
 
 ## Datenschutz
 

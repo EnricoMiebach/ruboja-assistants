@@ -278,6 +278,13 @@ final class Admin_Page {
 								<?php esc_html_e( 'Hide the header line of Ruboja (logo, assistant name and organization)', 'ruboja-assistants' ); ?>
 							</label>
 							<p class="description"><?php esc_html_e( 'Ruboja has no setting for this, so the plugin cuts off the top 60 pixels of the chat. If Ruboja changes its layout, switch this off.', 'ruboja-assistants' ); ?></p>
+							<p>
+								<label>
+									<input type="checkbox" name="ruboja_assistants[hide_greeting]" value="1" <?php checked( $settings['hide_greeting'] ); ?>>
+									<?php esc_html_e( 'Also cut off the greeting, e.g. "Nice to see you, Enrico!" (experimental)', 'ruboja-assistants' ); ?>
+								</label>
+							</p>
+							<p class="description"><?php esc_html_e( 'Only from a width of 640 pixels; in narrower windows such as the floating one the greeting may wrap and stays visible. Set the height of inline assistants about 100 pixels lower than without this option and rather a little too low, otherwise Ruboja centers the content and the greeting slides back into view. After the conversation has started, the top 100 pixels of the chat stay hidden.', 'ruboja-assistants' ); ?></p>
 						</td>
 					</tr>
 					<tr>
