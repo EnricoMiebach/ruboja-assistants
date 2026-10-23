@@ -103,8 +103,11 @@ Rot `#df252b` als Akzent, Schrift Outfit, flache Buttons mit 9 px Rundung, Karte
 1 px Rand `#e9ecef` und 18 px Rundung, Text `#1a1a1a` / `#2e2e2e`. Alle Werte stehen als
 CSS-Variablen an `.ruboja-assistant` und lassen sich im Theme überschreiben, z. B.
 `--ruboja-color`, `--ruboja-font`, `--ruboja-radius-button`, `--ruboja-radius-card`.
-Outfit liefert das Plugin nicht mit; ist die Schrift auf der Seite nicht geladen, greift die
-Systemschrift.
+Outfit liegt im Plugin (`assets/fonts/`, Latin-Teilmenge aus `@fontsource-variable/outfit`
+5.3.0, 32 KB, SIL Open Font License 1.1, siehe `assets/fonts/OFL.txt`). Sie wird unter dem
+eigenen Namen „Ruboja Outfit“ vom eigenen Server geladen, nur wenn ein Assistent auf der
+Seite steht, und überschreibt keine Schrift des Themes. Externe Schrift-Dienste werden nicht
+aufgerufen.
 
 ## Wo der API-Schlüssel liegt
 

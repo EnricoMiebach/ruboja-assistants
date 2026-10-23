@@ -7,11 +7,14 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+## [0.1.7] - 2026-10-23
+
 ### Changed
 - Design follows the Ruboja corporate design: Ruboja red #df252b as default accent (sites that kept the old dark blue default switch automatically), Outfit font stack, flat 9 px buttons with a darker hover, floating window as a white card with hairline border, 18 px corners and a plain white header with a red accent dot, muted text colors.
 
 ### Added
 - Loading spinner in the accent color while the assistant starts.
+- Outfit font bundled (Latin subset from @fontsource-variable/outfit 5.3.0, SIL OFL 1.1), served from the site itself as "Ruboja Outfit", so no third-party font service is contacted.
 
 ## [0.1.6] - 2026-10-23
 

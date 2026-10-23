@@ -5,11 +5,26 @@
  * changed per site, block or shortcode via --ruboja-color.
  */
 
+/*
+ * Outfit, bundled so the plugin's texts match Ruboja's chat in the iframe without
+ * loading fonts from a third party. Latin subset of @fontsource-variable/outfit 5.3.0,
+ * SIL Open Font License 1.1 (see ../fonts/OFL.txt). Own family name, so a theme's
+ * Outfit is never overridden; browsers download it only when the plugin shows text.
+ */
+@font-face {
+	font-family: "Ruboja Outfit";
+	font-style: normal;
+	font-display: swap;
+	font-weight: 100 900;
+	src: url("../fonts/outfit-latin-wght-normal.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 .ruboja-assistant {
 	--ruboja-color: #df252b;
 	--ruboja-on-color: #fff;
 	--ruboja-color-hover: color-mix(in srgb, var(--ruboja-color) 82%, #000);
-	--ruboja-font: "Outfit Variable", "Outfit", "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+	--ruboja-font: "Ruboja Outfit", "Outfit Variable", "Outfit", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 	--ruboja-ink: #1a1a1a;
 	--ruboja-text: #2e2e2e;
 	--ruboja-muted: #6b7280;
@@ -326,7 +341,7 @@
 /* Shown to editors only, when an embedded assistant is not released. */
 .ruboja-assistant-notice {
 	padding: 1em;
-	font-family: "Outfit Variable", "Outfit", system-ui, sans-serif;
+	font-family: "Ruboja Outfit", "Outfit Variable", "Outfit", system-ui, sans-serif;
 	color: #b51e22;
 	background: #fef2f2;
 	border: 1px dashed #f59b9b;

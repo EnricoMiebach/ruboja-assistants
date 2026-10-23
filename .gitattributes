@@ -3,6 +3,7 @@
 *.png binary
 *.jpg binary
 *.mo  binary
+*.woff2 binary
 
 # Not part of the plugin package (git archive / GitHub source zip)
 /.github            export-ignore

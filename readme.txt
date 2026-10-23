@@ -4,7 +4,7 @@ Tags: ai, chat, assistant, chatbot, ruboja
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.1.6
+Stable tag: 0.1.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,7 +65,14 @@ No. It is stored encrypted in the database (or defined in wp-config.php), never 
 
 No. Without user attribution the chat runs anonymously on the account of the key creator.
 
+== Credits ==
+
+Outfit font by The Outfit Project Authors, licensed under the SIL Open Font License 1.1 (assets/fonts/OFL.txt). Bundled from @fontsource-variable/outfit 5.3.0 and served from your own site.
+
 == Changelog ==
+
+= 0.1.7 =
+* Design follows the Ruboja corporate design: Ruboja red, Outfit font (bundled), flat buttons, card-style floating window, loading spinner.
 
 = 0.1.6 =
 * Deleting the plugin on a multisite network removes the API key and settings on every site.
