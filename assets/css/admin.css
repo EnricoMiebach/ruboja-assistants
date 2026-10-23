@@ -24,6 +24,13 @@
 	--ra-muted: #6b7280;
 	--ra-line: #e9ecef;
 	--ra-field: #d1d5db;
+	/* Core uses this blue for checked states and focus rings; on this page it is Ruboja red. */
+	--wp-admin-theme-color: #df252b;
+	--wp-admin-theme-color--rgb: 223, 37, 43;
+	--wp-admin-theme-color-darker-10: #b51e22;
+	--wp-admin-theme-color-darker-10--rgb: 181, 30, 34;
+	--wp-admin-theme-color-darker-20: #941a1d;
+	--wp-admin-theme-color-darker-20--rgb: 148, 26, 29;
 	max-width: 1100px;
 	font-family: "Ruboja Outfit", "Outfit Variable", "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
 	font-size: 14px;
@@ -145,10 +152,11 @@
 	border-radius: 5px;
 }
 
+/* Outset ring like core, in red, so the focus stays clearly visible. */
 .ruboja-assistants-admin input[type="checkbox"]:focus,
 .ruboja-assistants-admin input[type="radio"]:focus {
 	border-color: var(--ra-red);
-	box-shadow: 0 0 0 3px var(--ra-red-200);
+	box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ra-red);
 }
 
 .ruboja-assistants-admin input[type="checkbox"]:checked {
@@ -161,12 +169,14 @@
 	content: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%23ffffff%27%2F%3E%3C%2Fsvg%3E");
 }
 
+/* WordPress 7 fills a checked radio with its blue theme color; use Ruboja red with a white dot, like the checkboxes. */
 .ruboja-assistants-admin input[type="radio"]:checked {
+	background: var(--ra-red);
 	border-color: var(--ra-red);
 }
 
 .ruboja-assistants-admin input[type="radio"]:checked::before {
-	background-color: var(--ra-red);
+	background-color: #fff;
 }
 
 .ruboja-assistants-admin input[type="color"] {
