@@ -1,6 +1,6 @@
 {
 	"name": "ruboja-assistants",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"private": true,
 	"description": "WordPress plugin that embeds Ruboja AI assistants inline or as a floating chat window.",
 	"license": "GPL-2.0-or-later",

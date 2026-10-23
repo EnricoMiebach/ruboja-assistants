@@ -4,7 +4,7 @@ Tags: ai, chat, assistant, chatbot, ruboja
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.1.7
+Stable tag: 0.1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,10 @@ No. Without user attribution the chat runs anonymously on the account of the key
 Outfit font by The Outfit Project Authors, licensed under the SIL Open Font License 1.1 (assets/fonts/OFL.txt). Bundled from @fontsource-variable/outfit 5.3.0, used on the settings page and in the block editor, and served from your own site.
 
 == Changelog ==
+
+= 0.1.8 =
+* Ruboja corporate design for the settings page and the block in the editor; the front end is back to the design of 0.1.6 (dark blue, pill buttons, theme font).
+* Radio buttons and focus rings in Ruboja red, save button at the bottom.
 
 = 0.1.7 =
 * Design follows the Ruboja corporate design: Ruboja red, Outfit font (bundled), flat buttons, card-style floating window, loading spinner.

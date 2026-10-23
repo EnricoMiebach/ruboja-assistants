@@ -7,9 +7,13 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+## [0.1.8] - 2026-10-23
+
 ### Changed
 - The Ruboja corporate design now applies to the back end instead of the front end: the settings page is laid out as Ruboja cards with the Ruboja mark, Outfit, red buttons, red checkboxes and a connection status badge; the block placeholder in the editor uses Outfit and the Ruboja card shape. Shortcodes in the assistant table are shortened with a tooltip, descriptions limited to two lines.
 - The front end is back to the design of 0.1.6 (dark blue default accent, pill buttons, colored header of the floating window, the theme's font). Outfit is no longer loaded on the website.
+- Checked radio buttons and checkbox/radio focus rings on the settings page use Ruboja red instead of WordPress' blue theme color.
+- "Save Changes" is now at the very bottom of the settings page, below the embedding help.
 
 ## [0.1.7] - 2026-10-23
 
