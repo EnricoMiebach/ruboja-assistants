@@ -61,16 +61,6 @@ class Test_Settings extends WP_UnitTestCase {
 		$this->assertFalse( $clean['consent_required'] );
 	}
 
-	public function test_old_default_color_becomes_ruboja_red() {
-		$this->assertSame( '#df252b', Settings::get( 'color' ) );
-
-		update_option( Settings::OPTION_SETTINGS, array( 'color' => '#1F3A5F' ) );
-		$this->assertSame( Settings::DEFAULT_COLOR, Settings::get( 'color' ), 'The pre-0.1.7 default is replaced.' );
-
-		update_option( Settings::OPTION_SETTINGS, array( 'color' => '#00aa55' ) );
-		$this->assertSame( '#00aa55', Settings::get( 'color' ), 'A chosen color is kept.' );
-	}
-
 	public function test_api_base_is_fixed_unless_filtered_to_https() {
 		$this->assertSame( Settings::DEFAULT_API_BASE, Settings::api_base() );
 

@@ -61,7 +61,7 @@ define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
 | `height`   | 320–2000 (Pixel, inline) | `720`                    |
 | `title`    | Text                     | Titel aus Ruboja         |
 | `label`    | Button-Text (floating)   | Titel                    |
-| `color`    | Hex-Farbe                | Ruboja-Rot `#df252b`     |
+| `color`    | Hex-Farbe                | Akzentfarbe der Settings |
 | `position` | `right`, `left`          | `right`                  |
 
 ### Höhe und Kopfzeile
@@ -98,16 +98,17 @@ define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
 
 ## Design
 
-Die Oberfläche des Plugins folgt dem Ruboja-CD (gemessen auf ruboja.de, Oktober 2026):
-Rot `#df252b` als Akzent, Schrift Outfit, flache Buttons mit 9 px Rundung, Karten weiß mit
-1 px Rand `#e9ecef` und 18 px Rundung, Text `#1a1a1a` / `#2e2e2e`. Alle Werte stehen als
-CSS-Variablen an `.ruboja-assistant` und lassen sich im Theme überschreiben, z. B.
-`--ruboja-color`, `--ruboja-font`, `--ruboja-radius-button`, `--ruboja-radius-card`.
-Outfit liegt im Plugin (`assets/fonts/`, Latin-Teilmenge aus `@fontsource-variable/outfit`
-5.3.0, 32 KB, SIL Open Font License 1.1, siehe `assets/fonts/OFL.txt`). Sie wird unter dem
-eigenen Namen „Ruboja Outfit“ vom eigenen Server geladen, nur wenn ein Assistent auf der
-Seite steht, und überschreibt keine Schrift des Themes. Externe Schrift-Dienste werden nicht
-aufgerufen.
+- **Backend im Ruboja-CD:** Einstellungsseite und Block im Editor folgen dem Ruboja-CD
+  (gemessen auf ruboja.de, Oktober 2026): Rot `#df252b`, Schrift Outfit, flache Buttons mit
+  9 px Rundung, weiße Karten mit 1 px Rand `#e9ecef` und 18 px Rundung, Text `#1a1a1a` /
+  `#2e2e2e`, Ruboja-Zeichen im Seitenkopf.
+- **Front-End neutral:** Auf der Website übernimmt der Assistent die Schrift des Themes und
+  die eingestellte Akzentfarbe (Standard Dunkelblau `#1f3a5f`), damit er zum Design der
+  jeweiligen Website passt.
+- **Schrift Outfit** liegt im Plugin (`assets/fonts/`, Latin-Teilmenge aus
+  `@fontsource-variable/outfit` 5.3.0, 32 KB, SIL Open Font License 1.1, siehe
+  `assets/fonts/OFL.txt`). Sie wird nur im Backend geladen, unter dem eigenen Namen
+  „Ruboja Outfit“ und vom eigenen Server.
 
 ## Wo der API-Schlüssel liegt
 

@@ -67,7 +67,7 @@ No. Without user attribution the chat runs anonymously on the account of the key
 
 == Credits ==
 
-Outfit font by The Outfit Project Authors, licensed under the SIL Open Font License 1.1 (assets/fonts/OFL.txt). Bundled from @fontsource-variable/outfit 5.3.0 and served from your own site.
+Outfit font by The Outfit Project Authors, licensed under the SIL Open Font License 1.1 (assets/fonts/OFL.txt). Bundled from @fontsource-variable/outfit 5.3.0, used on the settings page and in the block editor, and served from your own site.
 
 == Changelog ==
 

@@ -21,6 +21,11 @@ final class Admin_Page {
 	const NOTICE_PREFIX = 'ruboja_assistants_notice_';
 
 	/**
+	 * Ruboja mark (logos/ruboja-mark.svg), shown next to the page title.
+	 */
+	const MARK_SVG = '<svg class="ruboja-assistants-admin__mark" viewBox="0 0 100 100" width="44" height="44" fill="none" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="32" stroke="#df252b" stroke-opacity="0.22" stroke-width="2.5"/><g stroke="#df252b" stroke-width="3" stroke-opacity="0.5"><line x1="50" y1="50" x2="82" y2="50"/><line x1="50" y1="50" x2="66" y2="77.7"/><line x1="50" y1="50" x2="34" y2="77.7"/><line x1="50" y1="50" x2="18" y2="50"/><line x1="50" y1="50" x2="34" y2="22.3"/><line x1="50" y1="50" x2="66" y2="22.3"/></g><g fill="#df252b"><circle cx="82" cy="50" r="5"/><circle cx="66" cy="77.7" r="5"/><circle cx="34" cy="77.7" r="5"/><circle cx="18" cy="50" r="5"/><circle cx="34" cy="22.3" r="5"/><circle cx="66" cy="22.3" r="5"/></g><circle cx="50" cy="50" r="9" fill="#7a1619"/></svg>';
+
+	/**
 	 * Registers the hooks.
 	 *
 	 * @return void
@@ -157,8 +162,14 @@ final class Admin_Page {
 
 		?>
 		<div class="wrap ruboja-assistants-admin">
-			<h1><?php esc_html_e( 'Ruboja Assistants', 'ruboja-assistants' ); ?></h1>
-			<?php $this->render_version(); ?>
+			<div class="ruboja-assistants-admin__head">
+				<?php echo self::MARK_SVG; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static markup. ?>
+				<div>
+					<h1><?php esc_html_e( 'Ruboja Assistants', 'ruboja-assistants' ); ?></h1>
+					<?php $this->render_version(); ?>
+				</div>
+			</div>
+			<hr class="wp-header-end">
 
 			<?php $this->render_notice(); ?>
 
@@ -166,6 +177,7 @@ final class Admin_Page {
 				<input type="hidden" name="action" value="<?php echo esc_attr( self::ACTION_SAVE ); ?>">
 				<?php wp_nonce_field( self::ACTION_SAVE ); ?>
 
+				<section class="ruboja-assistants-admin__card">
 				<h2><?php esc_html_e( 'Connection', 'ruboja-assistants' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
@@ -177,7 +189,7 @@ final class Admin_Page {
 					<tr>
 						<th scope="row"><?php esc_html_e( 'Status', 'ruboja-assistants' ); ?></th>
 						<td>
-							<p>
+							<p class="<?php echo esc_attr( 'ruboja-assistants-admin__status' . ( $last_sync > 0 ? ' is-connected' : '' ) ); ?>">
 								<?php
 								if ( $last_sync > 0 ) {
 									printf(
@@ -202,11 +214,15 @@ final class Admin_Page {
 						</td>
 					</tr>
 				</table>
+				</section>
 
+				<section class="ruboja-assistants-admin__card">
 				<h2><?php esc_html_e( 'Released assistants', 'ruboja-assistants' ); ?></h2>
 				<p><?php esc_html_e( 'Only released assistants can be embedded. All other assistants of your organization stay private, even if someone knows their id.', 'ruboja-assistants' ); ?></p>
 				<?php $this->render_assistant_table( $assistants ); ?>
+				</section>
 
+				<section class="ruboja-assistants-admin__card">
 				<h2><?php esc_html_e( 'Privacy', 'ruboja-assistants' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
@@ -260,14 +276,16 @@ final class Admin_Page {
 						</td>
 					</tr>
 				</table>
+				</section>
 
+				<section class="ruboja-assistants-admin__card">
 				<h2><?php esc_html_e( 'Appearance', 'ruboja-assistants' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
 						<th scope="row"><label for="ruboja-assistants-color"><?php esc_html_e( 'Accent color', 'ruboja-assistants' ); ?></label></th>
 						<td>
 							<input type="color" id="ruboja-assistants-color" name="ruboja_assistants[color]" value="<?php echo esc_attr( $settings['color'] ); ?>">
-							<p class="description"><?php esc_html_e( 'Used for buttons, the floating chat button and small accents. Default is the Ruboja red #df252b. Can be overridden per block or shortcode.', 'ruboja-assistants' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Used for buttons and the header of the floating window. Can be overridden per block or shortcode.', 'ruboja-assistants' ); ?></p>
 						</td>
 					</tr>
 					<tr>
@@ -311,10 +329,12 @@ final class Admin_Page {
 						</td>
 					</tr>
 				</table>
+				</section>
 
 				<?php submit_button(); ?>
 			</form>
 
+			<section class="ruboja-assistants-admin__card">
 			<h2><?php esc_html_e( 'Embedding', 'ruboja-assistants' ); ?></h2>
 			<p><?php esc_html_e( 'In the block editor, add the block "Ruboja Assistant" and choose an assistant. Elsewhere, use the shortcode:', 'ruboja-assistants' ); ?></p>
 			<ul class="ruboja-assistants-admin__examples">
@@ -322,6 +342,7 @@ final class Admin_Page {
 				<li><code>[ruboja_assistant id="…" mode="floating" label="…"]</code> – <?php esc_html_e( 'as a floating chat button', 'ruboja-assistants' ); ?></li>
 				<li><code>height="800" title="…" color="#1f3a5f" position="left"</code> – <?php esc_html_e( 'optional attributes', 'ruboja-assistants' ); ?></li>
 			</ul>
+			</section>
 		</div>
 		<?php
 	}
@@ -456,7 +477,7 @@ final class Admin_Page {
 							<?php if ( ! empty( $assistant['missing'] ) ) : ?>
 								<br><span class="ruboja-assistants-admin__missing"><?php esc_html_e( 'No longer accessible with this API key. It is not shown on the website.', 'ruboja-assistants' ); ?></span>
 							<?php elseif ( '' !== (string) $assistant['description'] ) : ?>
-								<br><span class="description"><?php echo esc_html( $assistant['description'] ); ?></span>
+								<span class="description ruboja-assistants-admin__summary" title="<?php echo esc_attr( $assistant['description'] ); ?>"><?php echo esc_html( $assistant['description'] ); ?></span>
 							<?php endif; ?>
 						</td>
 						<td><?php echo esc_html( $assistant['category'] ); ?></td>
@@ -464,7 +485,7 @@ final class Admin_Page {
 							<input type="checkbox" name="ruboja_assistants_logged_in_only[]" value="<?php echo esc_attr( $id ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: assistant title. */ __( 'Only for logged-in users: %s', 'ruboja-assistants' ), $assistant['title'] ) ); ?>" <?php checked( ! empty( $assistant['logged_in_only'] ) ); ?>>
 						</td>
 						<td>
-							<code class="ruboja-assistants-admin__shortcode"><?php echo esc_html( $shortcode ); ?></code>
+							<code class="ruboja-assistants-admin__shortcode" title="<?php echo esc_attr( $shortcode ); ?>"><?php echo esc_html( $shortcode ); ?></code>
 							<button type="button" class="button button-small ruboja-assistants-admin__copy" data-copy="<?php echo esc_attr( $shortcode ); ?>"><?php esc_html_e( 'Copy', 'ruboja-assistants' ); ?></button>
 						</td>
 					</tr>

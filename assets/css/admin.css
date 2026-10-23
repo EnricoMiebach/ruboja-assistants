@@ -1,14 +1,311 @@
-.ruboja-assistants-admin__version {
-	margin-top: 0;
-	color: #646970;
+/*
+ * Settings page in the Ruboja corporate design (ruboja.de, October 2026):
+ * red #df252b, Outfit, flat 9px buttons, white 18px cards with a #e9ecef
+ * hairline, text #1a1a1a / #2e2e2e. Scoped to .ruboja-assistants-admin.
+ */
+
+/* Bundled Outfit (SIL OFL 1.1, see ../fonts/OFL.txt), served from the site itself. */
+@font-face {
+	font-family: "Ruboja Outfit";
+	font-style: normal;
+	font-display: swap;
+	font-weight: 100 900;
+	src: url("../fonts/outfit-latin-wght-normal.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-.ruboja-assistants-admin__table {
+.ruboja-assistants-admin {
+	--ra-red: #df252b;
+	--ra-red-hover: #b51e22;
+	--ra-red-50: #fef2f2;
+	--ra-red-200: #fbcaca;
+	--ra-ink: #1a1a1a;
+	--ra-text: #2e2e2e;
+	--ra-muted: #6b7280;
+	--ra-line: #e9ecef;
+	--ra-field: #d1d5db;
 	max-width: 1100px;
+	font-family: "Ruboja Outfit", "Outfit Variable", "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+	font-size: 14px;
+	color: var(--ra-text);
+}
+
+.ruboja-assistants-admin input,
+.ruboja-assistants-admin select,
+.ruboja-assistants-admin textarea,
+.ruboja-assistants-admin .button {
+	font-family: inherit;
+}
+
+.ruboja-assistants-admin a {
+	color: var(--ra-red-hover);
+}
+
+.ruboja-assistants-admin a:hover,
+.ruboja-assistants-admin a:focus {
+	color: var(--ra-red);
+}
+
+/* Header */
+
+.ruboja-assistants-admin__head {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin: 18px 0 6px;
+}
+
+.ruboja-assistants-admin__mark {
+	flex: none;
+}
+
+.ruboja-assistants-admin__head h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--ra-ink);
+}
+
+.ruboja-assistants-admin__version {
+	margin: 2px 0 0;
+	color: var(--ra-muted);
+}
+
+/* Cards */
+
+.ruboja-assistants-admin__card {
+	margin: 20px 0;
+	padding: 6px 28px 22px;
+	background: #fff;
+	border: 1px solid var(--ra-line);
+	border-radius: 18px;
+}
+
+.ruboja-assistants-admin__card > h2 {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 20px 0 6px;
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--ra-ink);
+}
+
+/* Red accent dot as in Ruboja's navigation. */
+.ruboja-assistants-admin__card > h2::before {
+	width: 8px;
+	height: 8px;
+	content: "";
+	background: var(--ra-red);
+	border-radius: 50%;
+}
+
+.ruboja-assistants-admin .form-table th {
+	font-weight: 600;
+	color: var(--ra-ink);
+}
+
+.ruboja-assistants-admin .description {
+	color: var(--ra-muted);
+}
+
+.ruboja-assistants-admin code {
+	padding: 2px 6px;
+	background: #f6f6f7;
+	border-radius: 6px;
+}
+
+/* Fields */
+
+.ruboja-assistants-admin input[type="text"],
+.ruboja-assistants-admin input[type="password"],
+.ruboja-assistants-admin input[type="url"],
+.ruboja-assistants-admin input[type="number"],
+.ruboja-assistants-admin select,
+.ruboja-assistants-admin textarea {
+	min-height: 40px;
+	padding: 6px 12px;
+	color: var(--ra-ink);
+	border: 1px solid var(--ra-field);
+	border-radius: 9px;
+	box-shadow: none;
+}
+
+.ruboja-assistants-admin select {
+	padding-right: 32px;
+}
+
+.ruboja-assistants-admin input[type="text"]:focus,
+.ruboja-assistants-admin input[type="password"]:focus,
+.ruboja-assistants-admin input[type="url"]:focus,
+.ruboja-assistants-admin input[type="number"]:focus,
+.ruboja-assistants-admin select:focus,
+.ruboja-assistants-admin textarea:focus {
+	border-color: var(--ra-red);
+	outline: 2px solid transparent;
+	box-shadow: 0 0 0 3px var(--ra-red-200);
+}
+
+.ruboja-assistants-admin input[type="checkbox"],
+.ruboja-assistants-admin input[type="radio"] {
+	border-color: var(--ra-field);
+}
+
+.ruboja-assistants-admin input[type="checkbox"] {
+	border-radius: 5px;
+}
+
+.ruboja-assistants-admin input[type="checkbox"]:focus,
+.ruboja-assistants-admin input[type="radio"]:focus {
+	border-color: var(--ra-red);
+	box-shadow: 0 0 0 3px var(--ra-red-200);
+}
+
+.ruboja-assistants-admin input[type="checkbox"]:checked {
+	background: var(--ra-red);
+	border-color: var(--ra-red);
+}
+
+/* White check mark instead of core's blue one. */
+.ruboja-assistants-admin input[type="checkbox"]:checked::before {
+	content: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%23ffffff%27%2F%3E%3C%2Fsvg%3E");
+}
+
+.ruboja-assistants-admin input[type="radio"]:checked {
+	border-color: var(--ra-red);
+}
+
+.ruboja-assistants-admin input[type="radio"]:checked::before {
+	background-color: var(--ra-red);
+}
+
+.ruboja-assistants-admin input[type="color"] {
+	width: 56px;
+	height: 40px;
+	padding: 3px;
+	border: 1px solid var(--ra-field);
+	border-radius: 9px;
+}
+
+/* Buttons: flat, 9px corners, Outfit 600 */
+
+.ruboja-assistants-admin .button {
+	min-height: 40px;
+	padding: 0 18px;
+	font-weight: 600;
+	line-height: 38px;
+	color: var(--ra-red-hover);
+	background: #fff;
+	border: 1px solid var(--ra-red-200);
+	border-radius: 9px;
+	box-shadow: none;
+}
+
+.ruboja-assistants-admin .button:hover,
+.ruboja-assistants-admin .button:focus {
+	color: var(--ra-red-hover);
+	background: var(--ra-red-50);
+	border-color: var(--ra-red-200);
+	box-shadow: none;
+}
+
+.ruboja-assistants-admin .button:focus-visible {
+	outline: 2px solid var(--ra-red);
+	outline-offset: 2px;
+}
+
+.ruboja-assistants-admin .button-primary {
+	color: #fff;
+	background: var(--ra-red);
+	border-color: var(--ra-red);
+}
+
+.ruboja-assistants-admin .button-primary:hover,
+.ruboja-assistants-admin .button-primary:focus {
+	color: #fff;
+	background: var(--ra-red-hover);
+	border-color: var(--ra-red-hover);
+}
+
+.ruboja-assistants-admin .button-small {
+	min-height: 30px;
+	padding: 0 12px;
+	font-size: 13px;
+	line-height: 28px;
+}
+
+.ruboja-assistants-admin p.submit {
+	margin-top: 4px;
+	padding-top: 0;
+}
+
+/* Connection status */
+
+.ruboja-assistants-admin__status {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	background: #f6f6f7;
+	border-radius: 999px;
+}
+
+.ruboja-assistants-admin__status::before {
+	width: 8px;
+	height: 8px;
+	content: "";
+	background: #9ca3af;
+	border-radius: 50%;
+}
+
+.ruboja-assistants-admin__status.is-connected {
+	color: #166534;
+	background: #f0fdf4;
+}
+
+.ruboja-assistants-admin__status.is-connected::before {
+	background: #16a34a;
+}
+
+/* Assistant table */
+
+.ruboja-assistants-admin__table {
+	margin-top: 12px;
+	overflow: hidden;
+	border: 1px solid var(--ra-line);
+	border-radius: 12px;
+	box-shadow: none;
+}
+
+.ruboja-assistants-admin__table thead th {
+	font-weight: 600;
+	color: var(--ra-ink);
+	background: #fafafa;
+	border-bottom: 1px solid var(--ra-line);
+}
+
+.ruboja-assistants-admin__table.striped > tbody > :nth-child(odd) {
+	background: #fcfcfd;
+}
+
+.ruboja-assistants-admin__table td {
+	vertical-align: middle;
 }
 
 .ruboja-assistants-admin__table .check-column-wide {
 	width: 6em;
+}
+
+/* Two lines of the description; the full text is in the tooltip. */
+.ruboja-assistants-admin__summary {
+	display: -webkit-box;
+	margin-top: 2px;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 .ruboja-assistants-admin__table tr.is-missing td {
@@ -16,15 +313,25 @@
 }
 
 .ruboja-assistants-admin__missing {
-	color: #b32d2e;
+	color: var(--ra-red-hover);
 }
 
+/* Shortened with an ellipsis; the copy button copies the full shortcode. */
 .ruboja-assistants-admin__shortcode {
-	display: inline-block;
-	margin: 0 0.5em 0.25em 0;
-	word-break: break-all;
+	display: block;
+	max-width: 240px;
+	margin: 0 0 6px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .ruboja-assistants-admin__examples code {
 	white-space: nowrap;
+}
+
+@media (max-width: 782px) {
+	.ruboja-assistants-admin__card {
+		padding: 4px 16px 16px;
+	}
 }
