@@ -7,8 +7,11 @@ text of its GitHub release and of the "View details" dialog in WordPress.
 
 ## [Unreleased]
 
+## [0.1.9] - 2026-10-23
+
 ### Added
 - File check: each release carries checksums.json; once a day (and on "Check now") the plugin compares its files with the checksums of its version on GitHub and reports changed, missing and added files to the plugin developer by e-mail, and again when everything is back to normal. Result in Site Health and in a new "File check" card on the settings page. Prepared second channel: a Ruboja data source webhook.
+- Releases now carry checksums.json next to the zip; `npm run downloads` lists the downloads per release.
 
 ## [0.1.8] - 2026-10-23
 

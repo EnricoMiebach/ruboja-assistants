@@ -3,7 +3,7 @@
  * Plugin Name:       Ruboja Assistants
  * Plugin URI:        https://github.com/EnricoMiebach/ruboja-assistants
  * Description:       Embeds Ruboja AI assistants on your website, inline in the content or as a floating chat window.
- * Version:           0.1.8
+ * Version:           0.1.9
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Siteware GmbH
@@ -21,7 +21,7 @@ namespace Siteware\RubojaAssistants;
 
 defined( 'ABSPATH' ) || exit;
 
-const VERSION     = '0.1.8';
+const VERSION     = '0.1.9';
 const PLUGIN_FILE = __FILE__;
 
 require_once __DIR__ . '/includes/class-crypto.php';
