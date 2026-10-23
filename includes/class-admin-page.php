@@ -267,7 +267,7 @@ final class Admin_Page {
 						<th scope="row"><label for="ruboja-assistants-color"><?php esc_html_e( 'Accent color', 'ruboja-assistants' ); ?></label></th>
 						<td>
 							<input type="color" id="ruboja-assistants-color" name="ruboja_assistants[color]" value="<?php echo esc_attr( $settings['color'] ); ?>">
-							<p class="description"><?php esc_html_e( 'Used for buttons and the header of the floating window. Can be overridden per block or shortcode.', 'ruboja-assistants' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Used for buttons, the floating chat button and small accents. Default is the Ruboja red #df252b. Can be overridden per block or shortcode.', 'ruboja-assistants' ); ?></p>
 						</td>
 					</tr>
 					<tr>

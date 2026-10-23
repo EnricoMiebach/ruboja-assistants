@@ -61,7 +61,7 @@ define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
 | `height`   | 320–2000 (Pixel, inline) | `720`                    |
 | `title`    | Text                     | Titel aus Ruboja         |
 | `label`    | Button-Text (floating)   | Titel                    |
-| `color`    | Hex-Farbe                | Akzentfarbe der Settings |
+| `color`    | Hex-Farbe                | Ruboja-Rot `#df252b`     |
 | `position` | `right`, `left`          | `right`                  |
 
 ### Höhe und Kopfzeile
@@ -95,6 +95,16 @@ define( 'RUBOJA_ASSISTANTS_API_BASE', 'https://…/api/v1' );
   E-Mail-Adresse als `X-User-Mail`. Gedacht für Intranets, deren Nutzer auch in Ruboja sind.
 - Ohne Nutzer-Zuordnung laufen alle Chats anonym auf dem Konto des Schlüssel-Erstellers
   (Ruboja-Modus `operator`).
+
+## Design
+
+Die Oberfläche des Plugins folgt dem Ruboja-CD (gemessen auf ruboja.de, Oktober 2026):
+Rot `#df252b` als Akzent, Schrift Outfit, flache Buttons mit 9 px Rundung, Karten weiß mit
+1 px Rand `#e9ecef` und 18 px Rundung, Text `#1a1a1a` / `#2e2e2e`. Alle Werte stehen als
+CSS-Variablen an `.ruboja-assistant` und lassen sich im Theme überschreiben, z. B.
+`--ruboja-color`, `--ruboja-font`, `--ruboja-radius-button`, `--ruboja-radius-card`.
+Outfit liefert das Plugin nicht mit; ist die Schrift auf der Seite nicht geladen, greift die
+Systemschrift.
 
 ## Wo der API-Schlüssel liegt
 

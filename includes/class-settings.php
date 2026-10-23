@@ -22,7 +22,8 @@ final class Settings {
 	const API_KEY_CONSTANT  = 'RUBOJA_ASSISTANTS_API_KEY';
 	const API_BASE_CONSTANT = 'RUBOJA_ASSISTANTS_API_BASE';
 	const DEFAULT_API_BASE  = 'https://api.ruboja.de/api/v1';
-	const DEFAULT_COLOR     = '#1f3a5f';
+	const DEFAULT_COLOR     = '#df252b';
+	const LEGACY_COLOR      = '#1f3a5f';
 
 	/**
 	 * Default values of the general settings.
@@ -53,8 +54,14 @@ final class Settings {
 	 */
 	public static function all(): array {
 		$stored = get_option( self::OPTION_SETTINGS, array() );
+		$stored = is_array( $stored ) ? $stored : array();
 
-		return array_merge( self::defaults(), is_array( $stored ) ? $stored : array() );
+		// Until 0.1.6 the default accent was dark blue; sites that kept it get the Ruboja red.
+		if ( isset( $stored['color'] ) && self::LEGACY_COLOR === strtolower( (string) $stored['color'] ) ) {
+			unset( $stored['color'] );
+		}
+
+		return array_merge( self::defaults(), $stored );
 	}
 
 	/**

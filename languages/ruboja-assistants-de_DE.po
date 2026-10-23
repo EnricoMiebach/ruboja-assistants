@@ -161,10 +161,6 @@ msgstr "Darstellung"
 msgid "Accent color"
 msgstr "Akzentfarbe"
 
-#: includes/class-admin-page.php:270
-msgid "Used for buttons and the header of the floating window. Can be overridden per block or shortcode."
-msgstr "Für Buttons und die Kopfzeile des schwebenden Fensters. Lässt sich je Block oder Shortcode überschreiben."
-
 #: includes/class-admin-page.php:291
 msgid "Floating assistant on every page"
 msgstr "Schwebender Assistent auf allen Seiten"
@@ -363,7 +359,7 @@ msgstr "Bitte melden Sie sich an, um diesen Assistenten zu nutzen."
 msgid "Too many requests. Please try again later."
 msgstr "Zu viele Anfragen. Bitte versuchen Sie es später noch einmal."
 
-#: includes/class-settings.php:325
+#: includes/class-settings.php:332
 msgid "This assistant is provided by Ruboja. When you start it, your input and any files you upload are transmitted to Ruboja and processed by an AI model. Please do not enter information you do not want to share."
 msgstr "Dieser Assistent wird über Ruboja bereitgestellt. Wenn Sie ihn starten, werden Ihre Eingaben und hochgeladenen Dateien an Ruboja übertragen und von einem KI-Modell verarbeitet. Bitte geben Sie nichts ein, was Sie nicht teilen möchten."
 
@@ -494,3 +490,7 @@ msgstr "Auch die Begrüßung abschneiden, z. B. „Schön, dass du da bist, Enri
 #: includes/class-admin-page.php:287
 msgid "Only from a width of 640 pixels; in narrower windows such as the floating one the greeting may wrap and stays visible. Set the height of inline assistants about 100 pixels lower than without this option and rather a little too low, otherwise Ruboja centers the content and the greeting slides back into view. After the conversation has started, the top 100 pixels of the chat stay hidden."
 msgstr "Nur ab 640 Pixel Breite; in schmaleren Fenstern wie dem schwebenden kann die Begrüßung umbrechen und bleibt deshalb sichtbar. Die Höhe von Inline-Assistenten etwa 100 Pixel niedriger wählen als ohne diese Option, lieber etwas zu niedrig, sonst zentriert Ruboja den Inhalt und die Begrüßung rutscht wieder ins Bild. Nach dem Start des Gesprächs bleiben die obersten 100 Pixel des Chats verdeckt."
+
+#: includes/class-admin-page.php:270
+msgid "Used for buttons, the floating chat button and small accents. Default is the Ruboja red #df252b. Can be overridden per block or shortcode."
+msgstr "Für Buttons, den schwebenden Chat-Button und kleine Akzente. Standard ist das Ruboja-Rot #df252b. Lässt sich je Block oder Shortcode überschreiben."
